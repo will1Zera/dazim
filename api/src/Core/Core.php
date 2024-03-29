@@ -17,7 +17,7 @@ class Core
     {
         $url = '/';
 
-        isset($_GET['url']) && $url = $_GET['url'];
+        isset($_GET['url']) && $url .= $_GET['url'];
 
         $url !== '/' && $url = rtrim($url, '/');
 
