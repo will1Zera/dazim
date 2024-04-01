@@ -4,14 +4,15 @@ namespace App\Services;
 
 use App\Utils\Validator;
 use Exception;
-
+use PDOException;
+use App\Models\User;
 
 class UserService
 {
     /**
     * Método estático responsável por criar um novo usuário.
     *
-    * @param array $data Conjunto de dados.
+    * @param object $data Conjunto de dados.
     *
     * @return array Response.
     */
@@ -24,7 +25,18 @@ class UserService
                 'password' => $data['password'] ?? '',
             ]);
 
-            return $fields;
+            $fields['password'] = password_hash($fields['password'], PASSWORD_DEFAULT);
+
+            $user = User::save($fields);
+
+            if (!$user) return ['error' => 'Não foi possível criar a conta.'];
+
+            return "Usuário criado com sucesso!";
+        } catch (PDOException $e) {
+            if ($e->errorInfo[0] === 'HY000') return ['error' => 'Não foi possível conectar ao banco de dados.'];
+            if ($e->errorInfo[0] === 'HY093') return ['error' => 'Não foi possível encontrar a tabela.'];
+            if ($e->errorInfo[0] === '23000') return ['error' => 'Não foi possível criar a conta, e-mail já está em uso.'];
+            return ['error' => $e->getMessage()];
         } catch (Exception $e) {
             return ['error' => $e->getMessage()];
         }
