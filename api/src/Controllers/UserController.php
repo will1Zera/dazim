@@ -34,9 +34,31 @@ class UserController
         ], 201);
     }
 
+    /**
+    * Método responsável por chamar a autenticação de um usuário.
+    *
+    * @return array Response.
+    */
     public function login(Request $request, Response $response)
     {
-        
+        $body = $request::body();
+
+        $userService = UserService::auth($body);
+
+        if (isset($userService['error'])) {
+            return $response::json([
+                'error' => true,
+                'success' => false,
+                'message' => $userService['error']
+            ], 400);
+        }
+
+        $response::json([
+            'error' => false,
+            'success' => true,
+            'jwt' => $userService
+        ], 200);
+        return;
     }
 
     public function fetch(Request $request, Response $response)

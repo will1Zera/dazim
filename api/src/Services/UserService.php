@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Http\JWT;
 use App\Utils\Validator;
 use Exception;
 use PDOException;
@@ -36,6 +37,35 @@ class UserService
             if ($e->errorInfo[0] === 'HY000') return ['error' => 'Não foi possível conectar ao banco de dados.'];
             if ($e->errorInfo[0] === 'HY093') return ['error' => 'Não foi possível encontrar a tabela.'];
             if ($e->errorInfo[0] === '23000') return ['error' => 'Não foi possível criar a conta, e-mail já está em uso.'];
+            return ['error' => $e->getMessage()];
+        } catch (Exception $e) {
+            return ['error' => $e->getMessage()];
+        }
+    }
+
+    /**
+    * Método estático responsável por autenticar um usuário.
+    *
+    * @param object $data Conjunto de dados.
+    *
+    * @return array Response.
+    */
+    public static function auth(array $data)
+    {
+        try {
+            $fields = Validator::validate([
+                'email' => $data['email'] ?? '',
+                'password' => $data['password'] ?? '',
+            ]);
+
+            $user = User::authentication($fields);
+
+            if (!$user) return ['error' => 'Não foi possível realizar o login.'];
+            
+            return JWT::generate($user);
+        } catch (PDOException $e) {
+            if ($e->errorInfo[0] === 'HY000') return ['error' => 'Não foi possível conectar ao banco de dados.'];
+            if ($e->errorInfo[0] === 'HY093') return ['error' => 'Não foi possível encontrar a tabela.'];
             return ['error' => $e->getMessage()];
         } catch (Exception $e) {
             return ['error' => $e->getMessage()];

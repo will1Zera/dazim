@@ -12,7 +12,6 @@ class Core
     * 
     * @param array $routes Conjunto de rotas.
     */
-
     public static function dispath(array $routes)
     {
         $url = '/';
