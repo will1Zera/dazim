@@ -71,4 +71,36 @@ class UserService
             return ['error' => $e->getMessage()];
         }
     }
+
+    /**
+    * Método estático responsável por buscar um usuário.
+    *
+    * @param int|string $id Identificador.
+    *
+    * @return array Response.
+    */
+    public static function fetch(mixed $authorization)
+    {
+        try {
+            if (isset($authorization['error'])) {
+                return ['error' => $authorization['error']];
+            }
+
+            $userFormJWT = JWT::verify($authorization);
+
+            if(!$userFormJWT) ['error' => 'Realize o loin apra acessar esse recurso.'];
+
+            $user = User::find($userFormJWT['id']);
+
+            if(!$user) ['error' => 'Não foi possível encontrar o usuário.'];
+
+            return $user;
+        } catch (PDOException $e) {
+            if ($e->errorInfo[0] === 'HY000') return ['error' => 'Não foi possível conectar ao banco de dados.'];
+            if ($e->errorInfo[0] === 'HY093') return ['error' => 'Não foi possível encontrar a tabela.'];
+            return ['error' => $e->getMessage()];
+        } catch (Exception $e) {
+            return ['error' => $e->getMessage()];
+        }
+    }
 }

@@ -30,4 +30,22 @@ class Request
 
         return $data;
     }
+
+    /**
+    * Método estático responsável por fornecer o header presente na requisição.
+    *
+    * @return array Header.
+    */
+    public static function authorization()
+    {
+        $authorization = getallheaders();
+
+        if (!isset($authorization['Authorization'])) return ['error' => 'Nenhum token presente no header.'];
+
+        $authorizationPartials = explode(' ', $authorization['Authorization']);
+
+        if (count($authorizationPartials) != 2) return ['error' => 'Token fornecido no header é inválido.'];
+
+        return $authorizationPartials[1] ?? '';
+    }
 }
