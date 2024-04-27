@@ -92,4 +92,53 @@ class User extends Database
 
         return $stmt->fetch(\PDO::FETCH_ASSOC);
     }
+
+    /**
+    * Método estático responsável por atualizar um usuário.
+    *
+    * @param int|string $id Identificador.
+    * @param array $data Dados de entrada.
+    *
+    * @return array Dados do usuário.
+    */
+    public static function update(int|string $id, array $data)
+    {
+        $pdo = self::getConnection();
+
+        $stmt = $pdo->prepare("
+            UPDATE
+                users
+            SET
+                name = ? 
+            WHERE
+                id = ?
+        ");
+
+        $stmt->execute([$data['name'], $id]);
+
+        return $stmt->rowCount() > 0 ? true : false;
+    }
+
+    /**
+    * Método estático responsável por deletar um usuário.
+    *
+    * @param int|string $id Identificador.
+    *
+    * @return array Dados do usuário.
+    */
+    public static function delete(int|string $id)
+    {
+        $pdo = self::getConnection();
+
+        $stmt = $pdo->prepare("
+            DELETE FROM
+                users
+            WHERE
+                id = ?
+        ");
+
+        $stmt->execute([$id]);
+
+        return $stmt->rowCount() > 0 ? true : false;
+    }
 }

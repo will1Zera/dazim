@@ -13,7 +13,7 @@ class UserController
     *
     * @return array Response.
     */
-    public function store(Request $request, Response $response)
+    public function create(Request $request, Response $response)
     {
         $body = $request::body();
 
@@ -72,6 +72,14 @@ class UserController
 
         $userService = UserService::fetch($authorization);
 
+        if (isset($userService['unauthorized'])) {
+            return $response::json([
+                'error' => true,
+                'success' => false,
+                'message' => $userService['unauthorized']
+            ], 401);
+        }
+
         if (isset($userService['error'])) {
             return $response::json([
                 'error' => true,
@@ -88,13 +96,75 @@ class UserController
         return;
     }
 
+    /**
+    * Método responsável por atualizar um usuário.
+    *
+    * @return array Response.
+    */
     public function update(Request $request, Response $response)
     {
-        
+        $authorization = $request::authorization();
+
+        $body = $request::body();
+
+        $userService = UserService::update($authorization, $body);
+
+        if (isset($userService['unauthorized'])) {
+            return $response::json([
+                'error' => true,
+                'success' => false,
+                'message' => $userService['unauthorized']
+            ], 401);
+        }
+
+        if (isset($userService['error'])) {
+            return $response::json([
+                'error' => true,
+                'success' => false,
+                'message' => $userService['error']
+            ], 400);
+        }
+
+        $response::json([
+            'error' => false,
+            'success' => true,
+            'message' => $userService
+        ], 200);
+        return;
     }
 
-    public function remove(Request $request, Response $response, array $id)
+    /**
+    * Método responsável por remover um usuário.
+    *
+    * @return array Response.
+    */
+    public function delete(Request $request, Response $response, array $id)
     {
-        
+        $authorization = $request::authorization();
+
+        $userService = UserService::delete($authorization, $id[0]);
+
+        if (isset($userService['unauthorized'])) {
+            return $response::json([
+                'error' => true,
+                'success' => false,
+                'message' => $userService['unauthorized']
+            ], 401);
+        }
+
+        if (isset($userService['error'])) {
+            return $response::json([
+                'error' => true,
+                'success' => false,
+                'message' => $userService['error']
+            ], 400);
+        }
+
+        $response::json([
+            'error' => false,
+            'success' => true,
+            'message' => $userService
+        ], 200);
+        return;
     }
 }
