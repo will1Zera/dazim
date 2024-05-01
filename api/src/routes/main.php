@@ -26,3 +26,10 @@ Route::get('/etnias/fetch/{id}', 'EtniaController@fetch');
 Route::post('/etnias/create', 'EtniaController@create');
 Route::put('/etnias/update/{id}', 'EtniaController@update');
 Route::delete('/etnias/delete/{id}', 'EtniaController@delete');
+
+// TURNOS
+Route::get('/turnos', 'TurnoController@index');
+Route::get('/turnos/fetch/{id}', 'TurnoController@fetch');
+Route::post('/turnos/create', 'TurnoController@create');
+Route::put('/turnos/update/{id}', 'TurnoController@update');
+Route::delete('/turnos/delete/{id}', 'TurnoController@delete');
