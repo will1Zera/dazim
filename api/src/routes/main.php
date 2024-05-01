@@ -47,3 +47,10 @@ Route::get('/tipo_parentescos/fetch/{id}', 'TipoParentescoController@fetch');
 Route::post('/tipo_parentescos/create', 'TipoParentescoController@create');
 Route::put('/tipo_parentescos/update/{id}', 'TipoParentescoController@update');
 Route::delete('/tipo_parentescos/delete/{id}', 'TipoParentescoController@delete');
+
+// ESCOLAS
+Route::get('/escolas', 'EscolaController@index');
+Route::get('/escolas/fetch/{id}', 'EscolaController@fetch');
+Route::post('/escolas/create', 'EscolaController@create');
+Route::put('/escolas/update/{id}', 'EscolaController@update');
+Route::delete('/escolas/delete/{id}', 'EscolaController@delete');
