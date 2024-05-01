@@ -4,12 +4,12 @@ namespace App\Models;
 
 use App\Models\Database;
 
-class TipoResidencia extends Database
+class Turma extends Database
 {
     /**
-    * Método estático responsável por buscar tipos de residências.
+    * Método estático responsável por buscar turmas.
     *
-    * @return array Dados dos tipos de residências.
+    * @return array Dados das turmas.
     */
     public static function index()
     {
@@ -19,7 +19,7 @@ class TipoResidencia extends Database
             SELECT
                 *
             FROM
-                imdaz_tipo_residencias 
+                imdaz_turmas 
         ");
 
         $stmt->execute();
@@ -28,11 +28,11 @@ class TipoResidencia extends Database
     }
     
     /**
-    * Método estático responsável por buscar um tipo de residência.
+    * Método estático responsável por buscar uma turma.
     *
     * @param int|string $id Identificador.
     *
-    * @return array Dados do tipo de residência.
+    * @return array Dados da turma.
     */
     public static function find(int|string $id)
     {
@@ -40,9 +40,9 @@ class TipoResidencia extends Database
 
         $stmt = $pdo->prepare("
             SELECT
-                id, nome
+                id, nome, ano, turno_id
             FROM
-                imdaz_tipo_residencias 
+                imdaz_turmas 
             WHERE
                 id = ?
         ");
@@ -53,7 +53,7 @@ class TipoResidencia extends Database
     }
 
     /**
-    * Método estático responsável por salvar um tipo de residência.
+    * Método estático responsável por salvar uma turma.
     *
     * @param object $data Conjunto de dados.
     *
@@ -64,24 +64,26 @@ class TipoResidencia extends Database
         $pdo = self::getConnection();
 
         $stmt = $pdo->prepare("
-            INSERT INTO imdaz_tipo_residencias (nome)
-            VALUES (?)
+            INSERT INTO imdaz_turmas (nome, ano, turno_id)
+            VALUES (?, ?, ?)
         ");
 
         $stmt->execute([
             $data['nome'],
+            $data['ano'],
+            $data['turno_id']
         ]);
 
         return $pdo->lastInsertId() > 0 ? true : false;
     }
 
     /**
-    * Método estático responsável por atualizar um tipo de residência.
+    * Método estático responsável por atualizar uma turma.
     *
     * @param int|string $id Identificador.
     * @param array $data Dados de entrada.
     *
-    * @return array Dados do tipo de residência.
+    * @return array Dados da turma.
     */
     public static function update(int|string $id, array $data)
     {
@@ -89,24 +91,31 @@ class TipoResidencia extends Database
 
         $stmt = $pdo->prepare("
             UPDATE
-                imdaz_tipo_residencias
+                imdaz_turmas
             SET
-                nome = ? 
+                nome = ?,
+                ano = ?,
+                turno_id = ?
             WHERE
                 id = ?
         ");
 
-        $stmt->execute([$data['nome'], $id]);
+        $stmt->execute([
+            $data['nome'],
+            $data['ano'],
+            $data['turno_id'],
+            $id
+        ]);
 
         return $stmt->rowCount() > 0 ? true : false;
     }
 
     /**
-    * Método estático responsável por deletar um tipo de residência.
+    * Método estático responsável por deletar uma turma.
     *
     * @param int|string $id Identificador.
     *
-    * @return array Dados do tipo de residência.
+    * @return array Dados da turma.
     */
     public static function delete(int|string $id)
     {
@@ -114,7 +123,7 @@ class TipoResidencia extends Database
 
         $stmt = $pdo->prepare("
             DELETE FROM
-                imdaz_tipo_residencias
+                imdaz_turmas
             WHERE
                 id = ?
         ");

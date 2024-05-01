@@ -3,12 +3,16 @@
 require_once __DIR__ . '../../../vendor/autoload.php';
 
 use App\Migrations\CreateUsersTable;
+
 use App\Migrations\CreateImdazGenerosTable;
 use App\Migrations\CreateImdazEtniasTable;
 use App\Migrations\CreateImdazTurnosTable;
 use App\Migrations\CreateImdazTipoResidenciasTable;
 use App\Migrations\CreateImdazTipoParentescosTable;
 use App\Migrations\CreateImdazEscolasTable;
+
+use App\Migrations\CreateImdazTurmasTable;
+use App\Migrations\CreateImdazAlunosTable;
 
 // Executa todas as migrations
 
@@ -20,3 +24,6 @@ CreateImdazTurnosTable::up();
 CreateImdazTipoResidenciasTable::up();
 CreateImdazTipoParentescosTable::up();
 CreateImdazEscolasTable::up();
+
+CreateImdazTurmasTable::up();
+CreateImdazAlunosTable::up();

@@ -53,7 +53,7 @@ class Turno extends Database
     }
 
     /**
-    * Método estático responsável por savlar um turno.
+    * Método estático responsável por salvar um turno.
     *
     * @param object $data Conjunto de dados.
     *

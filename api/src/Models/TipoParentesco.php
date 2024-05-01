@@ -53,7 +53,7 @@ class TipoParentesco extends Database
     }
 
     /**
-    * Método estático responsável por savlar um tipo de parentesco.
+    * Método estático responsável por salvar um tipo de parentesco.
     *
     * @param object $data Conjunto de dados.
     *

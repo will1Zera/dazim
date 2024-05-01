@@ -7,7 +7,7 @@ use App\Models\Database;
 class User extends Database
 {
     /**
-    * Método estático responsável por savlar um usuário.
+    * Método estático responsável por salvar um usuário.
     *
     * @param object $data Conjunto de dados.
     *

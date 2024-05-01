@@ -53,7 +53,7 @@ class Escola extends Database
     }
 
     /**
-    * Método estático responsável por savlar uma escola.
+    * Método estático responsável por salvar uma escola.
     *
     * @param object $data Conjunto de dados.
     *

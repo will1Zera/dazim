@@ -54,3 +54,17 @@ Route::get('/escolas/fetch/{id}', 'EscolaController@fetch');
 Route::post('/escolas/create', 'EscolaController@create');
 Route::put('/escolas/update/{id}', 'EscolaController@update');
 Route::delete('/escolas/delete/{id}', 'EscolaController@delete');
+
+// TURMAS
+Route::get('/turmas', 'TurmaController@index');
+Route::get('/turmas/fetch/{id}', 'TurmaController@fetch');
+Route::post('/turmas/create', 'TurmaController@create');
+Route::put('/turmas/update/{id}', 'TurmaController@update');
+Route::delete('/turmas/delete/{id}', 'TurmaController@delete');
+
+// ALUNOS
+Route::get('/alunos', 'AlunoController@index');
+Route::get('/alunos/fetch/{id}', 'AlunoController@fetch');
+Route::post('/alunos/create', 'AlunoController@create');
+Route::put('/alunos/update/{id}', 'AlunoController@update');
+Route::delete('/alunos/delete/{id}', 'AlunoController@delete');
