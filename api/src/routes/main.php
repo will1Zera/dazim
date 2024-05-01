@@ -33,3 +33,17 @@ Route::get('/turnos/fetch/{id}', 'TurnoController@fetch');
 Route::post('/turnos/create', 'TurnoController@create');
 Route::put('/turnos/update/{id}', 'TurnoController@update');
 Route::delete('/turnos/delete/{id}', 'TurnoController@delete');
+
+// TIPO RESIDÊNCIAS
+Route::get('/tipo_residencias', 'TipoResidenciaController@index');
+Route::get('/tipo_residencias/fetch/{id}', 'TipoResidenciaController@fetch');
+Route::post('/tipo_residencias/create', 'TipoResidenciaController@create');
+Route::put('/tipo_residencias/update/{id}', 'TipoResidenciaController@update');
+Route::delete('/tipo_residencias/delete/{id}', 'TipoResidenciaController@delete');
+
+// TIPO PARENTESCOS
+Route::get('/tipo_parentescos', 'TipoParentescoController@index');
+Route::get('/tipo_parentescos/fetch/{id}', 'TipoParentescoController@fetch');
+Route::post('/tipo_parentescos/create', 'TipoParentescoController@create');
+Route::put('/tipo_parentescos/update/{id}', 'TipoParentescoController@update');
+Route::delete('/tipo_parentescos/delete/{id}', 'TipoParentescoController@delete');
