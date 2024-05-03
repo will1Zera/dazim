@@ -236,4 +236,34 @@ class AlunoService
             return ['error' => $e->getMessage()];
         }
     }
+
+    /**
+    * Método estático responsável por buscar alunos aniversariantes.
+    *
+    * @param mixed $authorization Token.
+    *
+    * @return array Response.
+    */
+    public static function birthday(mixed $authorization)
+    {
+        try {
+            if (isset($authorization['error'])) return ['unauthorized' => $authorization['error']];
+
+            $userFromJWT = JWT::verify($authorization);
+
+            if(!$userFromJWT) return ['unauthorized' => 'Realize o login para acessar esse recurso.'];
+
+            $alunos = Aluno::birthday();
+
+            if(!$alunos) return ['error' => 'Não foi possível encontrar os alunos aniversariantes da semana.'];
+
+            return $alunos;
+        } catch (PDOException $e) {
+            if ($e->errorInfo[0] === 'HY000') return ['error' => 'Não foi possível conectar ao banco de dados.'];
+            if ($e->errorInfo[0] === 'HY093') return ['error' => 'Não foi possível encontrar a tabela.'];
+            return ['error' => $e->getMessage()];
+        } catch (Exception $e) {
+            return ['error' => $e->getMessage()];
+        }
+    }
 }

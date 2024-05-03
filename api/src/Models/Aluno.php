@@ -223,4 +223,33 @@ class Aluno extends Database
 
         return $stmt->rowCount() > 0 ? true : false;
     }
+
+    /**
+    * Método estático responsável por buscar alunos aniversariantes da semana.
+    *
+    * @return array Dados dos alunos.
+    */
+    public static function birthday()
+    {
+        $pdo = self::getConnection();
+
+        $data_atual = date('Y-m-d');
+        $data_semana = date('Y-m-d', strtotime('+6 days', strtotime($data_atual)));
+
+        $stmt = $pdo->prepare("
+            SELECT
+                id, nome, nascimento
+            FROM
+                imdaz_alunos 
+            WHERE
+                DATE_FORMAT(nascimento, '%m-%d') BETWEEN DATE_FORMAT(:data_atual, '%m-%d') AND DATE_FORMAT(:data_semana, '%m-%d')
+        ");
+
+        $stmt->execute([
+            ':data_atual' => $data_atual,
+            ':data_semana' => $data_semana
+        ]);
+
+        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+    }
 }

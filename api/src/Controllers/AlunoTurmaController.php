@@ -4,12 +4,12 @@ namespace App\Controllers;
 
 use App\Http\Request;
 use App\Http\Response;
-use App\Services\AlunoService;
+use App\Services\AlunoTurmaService;
 
-class AlunoController
+class AlunoTurmaController
 {
     /**
-    * Método responsável por buscar alunos.
+    * Método responsável por buscar turmas.
     *
     * @return array Response.
     */
@@ -17,34 +17,34 @@ class AlunoController
     {
         $authorization = $request::authorization();
 
-        $alunoService = alunoService::index($authorization);
+        $alunoTurmaService = alunoTurmaService::index($authorization);
 
-        if (isset($alunoService['unauthorized'])) {
+        if (isset($alunoTurmaService['unauthorized'])) {
             return $response::json([
                 'error' => true,
                 'success' => false,
-                'message' => $alunoService['unauthorized']
+                'message' => $alunoTurmaService['unauthorized']
             ], 401);
         }
 
-        if (isset($alunoService['error'])) {
+        if (isset($alunoTurmaService['error'])) {
             return $response::json([
                 'error' => true,
                 'success' => false,
-                'message' => $alunoService['error']
+                'message' => $alunoTurmaService['error']
             ], 400);
         }
 
         $response::json([
             'error' => false,
             'success' => true,
-            'data' => $alunoService
+            'data' => $alunoTurmaService
         ], 200);
         return;
     }
 
     /**
-    * Método responsável por buscar um aluno.
+    * Método responsável por buscar uma turma.
     *
     * @return array Response.
     */
@@ -52,34 +52,34 @@ class AlunoController
     {
         $authorization = $request::authorization();
 
-        $alunoService = alunoService::fetch($authorization, $id[0]);
+        $alunoTurmaService = alunoTurmaService::fetch($authorization, $id[0]);
 
-        if (isset($alunoService['unauthorized'])) {
+        if (isset($alunoTurmaService['unauthorized'])) {
             return $response::json([
                 'error' => true,
                 'success' => false,
-                'message' => $alunoService['unauthorized']
+                'message' => $alunoTurmaService['unauthorized']
             ], 401);
         }
 
-        if (isset($alunoService['error'])) {
+        if (isset($alunoTurmaService['error'])) {
             return $response::json([
                 'error' => true,
                 'success' => false,
-                'message' => $alunoService['error']
+                'message' => $alunoTurmaService['error']
             ], 400);
         }
 
         $response::json([
             'error' => false,
             'success' => true,
-            'data' => $alunoService
+            'data' => $alunoTurmaService
         ], 200);
         return;
     }
 
     /**
-    * Método responsável por chamar a criação de um novo aluno.
+    * Método responsável por chamar a criação de uma nova turma.
     *
     * @return array Response.
     */
@@ -89,25 +89,25 @@ class AlunoController
 
         $body = $request::body();
 
-        $alunoService = alunoService::create($authorization, $body);
+        $alunoTurmaService = alunoTurmaService::create($authorization, $body);
 
-        if (isset($alunoService['error'])) {
+        if (isset($alunoTurmaService['error'])) {
             return $response::json([
                 'error' => true,
                 'success' => false,
-                'message' => $alunoService['error']
+                'message' => $alunoTurmaService['error']
             ], 400);
         }
 
         $response::json([
             'error' => false,
             'success' => true,
-            'message' => $alunoService
+            'message' => $alunoTurmaService
         ], 201);
     }
 
     /**
-    * Método responsável por atualizar um aluno.
+    * Método responsável por atualizar uma turma.
     *
     * @return array Response.
     */
@@ -117,34 +117,34 @@ class AlunoController
 
         $body = $request::body();
 
-        $alunoService = alunoService::update($authorization, $body, $id[0]);
+        $alunoTurmaService = alunoTurmaService::update($authorization, $body, $id[0]);
 
-        if (isset($alunoService['unauthorized'])) {
+        if (isset($alunoTurmaService['unauthorized'])) {
             return $response::json([
                 'error' => true,
                 'success' => false,
-                'message' => $alunoService['unauthorized']
+                'message' => $alunoTurmaService['unauthorized']
             ], 401);
         }
 
-        if (isset($alunoService['error'])) {
+        if (isset($alunoTurmaService['error'])) {
             return $response::json([
                 'error' => true,
                 'success' => false,
-                'message' => $alunoService['error']
+                'message' => $alunoTurmaService['error']
             ], 400);
         }
 
         $response::json([
             'error' => false,
             'success' => true,
-            'message' => $alunoService
+            'message' => $alunoTurmaService
         ], 200);
         return;
     }
 
     /**
-    * Método responsável por remover um aluno.
+    * Método responsável por remover uma turma.
     *
     * @return array Response.
     */
@@ -152,63 +152,28 @@ class AlunoController
     {
         $authorization = $request::authorization();
 
-        $alunoService = alunoService::delete($authorization, $id[0]);
+        $alunoTurmaService = alunoTurmaService::delete($authorization, $id[0]);
 
-        if (isset($alunoService['unauthorized'])) {
+        if (isset($alunoTurmaService['unauthorized'])) {
             return $response::json([
                 'error' => true,
                 'success' => false,
-                'message' => $alunoService['unauthorized']
+                'message' => $alunoTurmaService['unauthorized']
             ], 401);
         }
 
-        if (isset($alunoService['error'])) {
+        if (isset($alunoTurmaService['error'])) {
             return $response::json([
                 'error' => true,
                 'success' => false,
-                'message' => $alunoService['error']
+                'message' => $alunoTurmaService['error']
             ], 400);
         }
 
         $response::json([
             'error' => false,
             'success' => true,
-            'message' => $alunoService
-        ], 200);
-        return;
-    }
-
-    /**
-    * Método responsável por buscar alunos aniversariantes.
-    *
-    * @return array Response.
-    */
-    public function birthday(Request $request, Response $response)
-    {
-        $authorization = $request::authorization();
-
-        $alunoService = alunoService::birthday($authorization);
-
-        if (isset($alunoService['unauthorized'])) {
-            return $response::json([
-                'error' => true,
-                'success' => false,
-                'message' => $alunoService['unauthorized']
-            ], 401);
-        }
-
-        if (isset($alunoService['error'])) {
-            return $response::json([
-                'error' => true,
-                'success' => false,
-                'message' => $alunoService['error']
-            ], 400);
-        }
-
-        $response::json([
-            'error' => false,
-            'success' => true,
-            'data' => $alunoService
+            'message' => $alunoTurmaService
         ], 200);
         return;
     }
