@@ -12,6 +12,9 @@ use App\Migrations\CreateImdazTipoParentescosTable;
 use App\Migrations\CreateImdazEscolasTable;
 
 use App\Migrations\CreateImdazTurmasTable;
+use App\Migrations\CreateImdazAlunosTable;
+use App\Migrations\CreateImdazAlunosTurmasTable;
+
 
 // Executa todas as migrations
 
@@ -25,3 +28,6 @@ CreateImdazTipoParentescosTable::up();
 CreateImdazEscolasTable::up();
 
 CreateImdazTurmasTable::up();
+CreateImdazAlunosTable::up();
+CreateImdazAlunosTurmasTable::up();
+

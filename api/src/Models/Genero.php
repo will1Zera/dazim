@@ -53,7 +53,7 @@ class Genero extends Database
     }
 
     /**
-    * Método estático responsável por savlar um gênero.
+    * Método estático responsável por salvar um gênero.
     *
     * @param object $data Conjunto de dados.
     *

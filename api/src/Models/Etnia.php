@@ -53,7 +53,7 @@ class Etnia extends Database
     }
 
     /**
-    * Método estático responsável por savlar uma etnia.
+    * Método estático responsável por salvar uma etnia.
     *
     * @param object $data Conjunto de dados.
     *

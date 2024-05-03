@@ -53,7 +53,7 @@ class Turma extends Database
     }
 
     /**
-    * Método estático responsável por savlar uma turma.
+    * Método estático responsável por salvar uma turma.
     *
     * @param object $data Conjunto de dados.
     *
