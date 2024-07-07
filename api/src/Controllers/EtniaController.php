@@ -6,7 +6,7 @@ use App\Http\Request;
 use App\Http\Response;
 use App\Services\EtniaService;
 
-class EtniaController
+class EtniaController implements ControllerInterface
 {
     /**
     * Método responsável por buscar etnias.

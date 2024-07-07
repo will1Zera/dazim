@@ -4,7 +4,7 @@ namespace App\Migrations;
 
 use App\Models\Database;
 
-class CreateImdazAlunosTable extends Database
+class CreateDazimAlunosTable extends Database
 {
     /**
     * Método estático resposável por rodar a migração da tabela.
@@ -16,7 +16,7 @@ class CreateImdazAlunosTable extends Database
         $pdo = self::getConnection();
 
         $sql = "
-            CREATE TABLE IF NOT EXISTS imdaz_alunos (
+            CREATE TABLE IF NOT EXISTS dazim_alunos (
                 id INT AUTO_INCREMENT PRIMARY KEY,
                 nome VARCHAR(255) NOT NULL,
                 cep VARCHAR(9) NOT NULL,
@@ -55,17 +55,17 @@ class CreateImdazAlunosTable extends Database
 
                 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
                 updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-                FOREIGN KEY (genero_id) REFERENCES imdaz_generos(id) ON DELETE CASCADE,
-                FOREIGN KEY (etnia_id) REFERENCES imdaz_etnias(id) ON DELETE CASCADE,
-                FOREIGN KEY (escola_id) REFERENCES imdaz_escolas(id) ON DELETE CASCADE,
-                FOREIGN KEY (tipo_residencia_id) REFERENCES imdaz_tipo_residencias(id) ON DELETE CASCADE,
-                FOREIGN KEY (tipo_parentesco_id) REFERENCES imdaz_tipo_parentescos(id) ON DELETE CASCADE
+                FOREIGN KEY (genero_id) REFERENCES dazim_generos(id) ON DELETE CASCADE,
+                FOREIGN KEY (etnia_id) REFERENCES dazim_etnias(id) ON DELETE CASCADE,
+                FOREIGN KEY (escola_id) REFERENCES dazim_escolas(id) ON DELETE CASCADE,
+                FOREIGN KEY (tipo_residencia_id) REFERENCES dazim_tipo_residencias(id) ON DELETE CASCADE,
+                FOREIGN KEY (tipo_parentesco_id) REFERENCES dazim_tipo_parentescos(id) ON DELETE CASCADE
             )
         ";
 
         $pdo->exec($sql);
 
-        echo "Tabela 'imdaz_alunos' criada com sucesso\n";
+        echo "Tabela 'dazim_alunos' criada com sucesso\n";
     }
 
     /**
@@ -77,10 +77,10 @@ class CreateImdazAlunosTable extends Database
     {
         $pdo = self::getConnection();
 
-        $sql = "DROP TABLE IF EXISTS imdaz_alunos";
+        $sql = "DROP TABLE IF EXISTS dazim_alunos";
 
         $pdo->exec($sql);
 
-        echo "Tabela 'imdaz_alunos' removida com sucesso\n";
+        echo "Tabela 'dazim_alunos' removida com sucesso\n";
     }
 }

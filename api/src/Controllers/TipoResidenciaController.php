@@ -6,7 +6,7 @@ use App\Http\Request;
 use App\Http\Response;
 use App\Services\TipoResidenciaService;
 
-class TipoResidenciaController
+class TipoResidenciaController implements ControllerInterface
 {
     /**
     * Método responsável por buscar tipos de residência.

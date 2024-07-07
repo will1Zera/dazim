@@ -6,6 +6,6 @@ class HomeController
 {
     public function index()
     {
-        echo 'Welcome to the IMDAZ api!';
+        echo 'Welcome to the Dazim!';
     }
 }

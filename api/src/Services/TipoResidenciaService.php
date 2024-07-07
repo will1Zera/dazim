@@ -8,7 +8,7 @@ use Exception;
 use PDOException;
 use App\Models\TipoResidencia;
 
-class TipoResidenciaService
+class TipoResidenciaService implements ServiceInterface
 {
     /**
     * Método estático responsável por buscar tipos de residência.

@@ -8,7 +8,7 @@ use Exception;
 use PDOException;
 use App\Models\Turno;
 
-class TurnoService
+class TurnoService implements ServiceInterface
 {
     /**
     * Método estático responsável por buscar turnos.

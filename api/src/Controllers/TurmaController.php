@@ -6,7 +6,7 @@ use App\Http\Request;
 use App\Http\Response;
 use App\Services\TurmaService;
 
-class TurmaController
+class TurmaController implements ControllerInterface
 {
     /**
     * Método responsável por buscar turmas.

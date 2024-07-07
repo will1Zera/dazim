@@ -8,7 +8,7 @@ use Exception;
 use PDOException;
 use App\Models\Etnia;
 
-class EtniaService
+class EtniaService implements ServiceInterface
 {
     /**
     * Método estático responsável por buscar etnias.

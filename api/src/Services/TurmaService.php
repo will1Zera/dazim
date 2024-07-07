@@ -8,7 +8,7 @@ use Exception;
 use PDOException;
 use App\Models\Turma;
 
-class TurmaService
+class TurmaService implements ServiceInterface
 {
     /**
     * Método estático responsável por buscar turmas.

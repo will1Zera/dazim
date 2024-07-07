@@ -8,7 +8,7 @@ use Exception;
 use PDOException;
 use App\Models\Escola;
 
-class EscolaService
+class EscolaService implements ServiceInterface
 {
     /**
     * Método estático responsável por buscar escolas.

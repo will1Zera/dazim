@@ -8,7 +8,7 @@ use Exception;
 use PDOException;
 use App\Models\Genero;
 
-class GeneroService
+class GeneroService implements ServiceInterface
 {
     /**
     * Método estático responsável por buscar gêneros.

@@ -6,7 +6,7 @@ use App\Http\Request;
 use App\Http\Response;
 use App\Services\TurnoService;
 
-class TurnoController
+class TurnoController implements ControllerInterface
 {
     /**
     * Método responsável por buscar turnos.

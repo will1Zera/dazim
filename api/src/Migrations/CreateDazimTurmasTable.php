@@ -4,7 +4,7 @@ namespace App\Migrations;
 
 use App\Models\Database;
 
-class CreateImdazTurmasTable extends Database
+class CreateDazimTurmasTable extends Database
 {
     /**
     * Método estático resposável por rodar a migração da tabela.
@@ -16,20 +16,20 @@ class CreateImdazTurmasTable extends Database
         $pdo = self::getConnection();
 
         $sql = "
-            CREATE TABLE IF NOT EXISTS imdaz_turmas (
+            CREATE TABLE IF NOT EXISTS dazim_turmas (
                 id INT AUTO_INCREMENT PRIMARY KEY,
                 nome VARCHAR(255) NOT NULL,
                 ano INT NOT NULL,
                 turno_id INT NOT NULL,
                 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
                 updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-                FOREIGN KEY (turno_id) REFERENCES imdaz_turnos(id) ON DELETE CASCADE
+                FOREIGN KEY (turno_id) REFERENCES dazim_turnos(id) ON DELETE CASCADE
             )
         ";
 
         $pdo->exec($sql);
 
-        echo "Tabela 'imdaz_turmas' criada com sucesso\n";
+        echo "Tabela 'dazim_turmas' criada com sucesso\n";
     }
 
     /**
@@ -41,10 +41,10 @@ class CreateImdazTurmasTable extends Database
     {
         $pdo = self::getConnection();
 
-        $sql = "DROP TABLE IF EXISTS imdaz_turmas";
+        $sql = "DROP TABLE IF EXISTS dazim_turmas";
 
         $pdo->exec($sql);
 
-        echo "Tabela 'imdaz_turmas' removida com sucesso\n";
+        echo "Tabela 'dazim_turmas' removida com sucesso\n";
     }
 }

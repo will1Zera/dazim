@@ -8,7 +8,7 @@ use Exception;
 use PDOException;
 use App\Models\TipoParentesco;
 
-class TipoParentescoService
+class TipoParentescoService implements ServiceInterface
 {
     /**
     * Método estático responsável por buscar tipos de parentesco.

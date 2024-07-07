@@ -6,7 +6,7 @@ use App\Http\Request;
 use App\Http\Response;
 use App\Services\AlunoService;
 
-class AlunoController
+class AlunoController implements ControllerInterface
 {
     /**
     * Método responsável por buscar alunos.

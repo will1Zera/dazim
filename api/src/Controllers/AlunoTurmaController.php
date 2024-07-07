@@ -6,7 +6,7 @@ use App\Http\Request;
 use App\Http\Response;
 use App\Services\AlunoTurmaService;
 
-class AlunoTurmaController
+class AlunoTurmaController implements ControllerInterface
 {
     /**
     * Método responsável por buscar turmas.

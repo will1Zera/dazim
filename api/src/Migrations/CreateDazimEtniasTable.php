@@ -4,7 +4,7 @@ namespace App\Migrations;
 
 use App\Models\Database;
 
-class CreateImdazGenerosTable extends Database
+class CreateDazimEtniasTable extends Database
 {
     /**
     * Método estático resposável por rodar a migração da tabela.
@@ -16,7 +16,7 @@ class CreateImdazGenerosTable extends Database
         $pdo = self::getConnection();
 
         $sql = "
-            CREATE TABLE IF NOT EXISTS imdaz_generos (
+            CREATE TABLE IF NOT EXISTS dazim_etnias (
                 id INT AUTO_INCREMENT PRIMARY KEY,
                 nome VARCHAR(255) NOT NULL,
                 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
@@ -26,7 +26,7 @@ class CreateImdazGenerosTable extends Database
 
         $pdo->exec($sql);
 
-        echo "Tabela 'imdaz_generos' criada com sucesso\n";
+        echo "Tabela 'dazim_etnias' criada com sucesso\n";
     }
 
     /**
@@ -38,10 +38,10 @@ class CreateImdazGenerosTable extends Database
     {
         $pdo = self::getConnection();
 
-        $sql = "DROP TABLE IF EXISTS imdaz_generos";
+        $sql = "DROP TABLE IF EXISTS dazim_etnias";
 
         $pdo->exec($sql);
 
-        echo "Tabela 'imdaz_generos' removida com sucesso\n";
+        echo "Tabela 'dazim_etnias' removida com sucesso\n";
     }
 }

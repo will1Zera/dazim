@@ -8,7 +8,7 @@ use Exception;
 use PDOException;
 use App\Models\AlunoTurma;
 
-class AlunoTurmaService
+class AlunoTurmaService implements ServiceInterface
 {
     /**
     * Método estático responsável por buscar alunos e turmas.

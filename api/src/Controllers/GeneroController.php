@@ -6,7 +6,7 @@ use App\Http\Request;
 use App\Http\Response;
 use App\Services\GeneroService;
 
-class GeneroController
+class GeneroController implements ControllerInterface
 {
     /**
     * Método responsável por buscar gêneros.

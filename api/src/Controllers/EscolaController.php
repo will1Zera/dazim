@@ -6,7 +6,7 @@ use App\Http\Request;
 use App\Http\Response;
 use App\Services\EscolaService;
 
-class EscolaController
+class EscolaController implements ControllerInterface
 {
     /**
     * Método responsável por buscar escolas.
