@@ -91,6 +91,14 @@ class AlunoTurmaController implements ControllerInterface
 
         $alunoTurmaService = alunoTurmaService::create($authorization, $body);
 
+        if (isset($alunoTurmaService['unauthorized'])) {
+            return $response::json([
+                'error' => true,
+                'success' => false,
+                'message' => $alunoTurmaService['unauthorized']
+            ], 401);
+        }
+
         if (isset($alunoTurmaService['error'])) {
             return $response::json([
                 'error' => true,

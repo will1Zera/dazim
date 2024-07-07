@@ -19,7 +19,7 @@ class Escola extends Database
             SELECT
                 *
             FROM
-                imdaz_escolas 
+                dazim_escolas 
         ");
 
         $stmt->execute();
@@ -42,7 +42,7 @@ class Escola extends Database
             SELECT
                 id, nome, cep, rua, bairro, cidade, numero
             FROM
-                imdaz_escolas 
+                dazim_escolas 
             WHERE
                 id = ?
         ");
@@ -64,7 +64,7 @@ class Escola extends Database
         $pdo = self::getConnection();
 
         $stmt = $pdo->prepare("
-            INSERT INTO imdaz_escolas (nome, cep, rua, bairro, cidade, numero)
+            INSERT INTO dazim_escolas (nome, cep, rua, bairro, cidade, numero)
             VALUES (?, ?, ?, ?, ?, ?)
         ");
 
@@ -94,7 +94,7 @@ class Escola extends Database
 
         $stmt = $pdo->prepare("
             UPDATE
-                imdaz_escolas
+                dazim_escolas
             SET
                 nome = ?,
                 cep = ?,
@@ -132,7 +132,7 @@ class Escola extends Database
 
         $stmt = $pdo->prepare("
             DELETE FROM
-                imdaz_escolas
+                dazim_escolas
             WHERE
                 id = ?
         ");

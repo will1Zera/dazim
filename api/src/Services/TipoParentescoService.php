@@ -28,8 +28,6 @@ class TipoParentescoService implements ServiceInterface
 
             $parentescos = TipoParentesco::index();
 
-            if(!$parentescos) return ['error' => 'Não foi possível encontrar os tipos de parentesco.'];
-
             return $parentescos;
         } catch (PDOException $e) {
             if ($e->errorInfo[0] === 'HY000') return ['error' => 'Não foi possível conectar ao banco de dados.'];

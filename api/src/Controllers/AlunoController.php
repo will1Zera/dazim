@@ -91,6 +91,14 @@ class AlunoController implements ControllerInterface
 
         $alunoService = alunoService::create($authorization, $body);
 
+        if (isset($alunoService['unauthorized'])) {
+            return $response::json([
+                'error' => true,
+                'success' => false,
+                'message' => $alunoService['unauthorized']
+            ], 401);
+        }
+
         if (isset($alunoService['error'])) {
             return $response::json([
                 'error' => true,

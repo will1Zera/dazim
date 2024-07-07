@@ -28,8 +28,6 @@ class TurnoService implements ServiceInterface
 
             $turnos = Turno::index();
 
-            if(!$turnos) return ['error' => 'Não foi possível encontrar os turnos.'];
-
             return $turnos;
         } catch (PDOException $e) {
             if ($e->errorInfo[0] === 'HY000') return ['error' => 'Não foi possível conectar ao banco de dados.'];

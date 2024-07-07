@@ -19,7 +19,7 @@ class Turma extends Database
             SELECT
                 *
             FROM
-                imdaz_turmas 
+                dazim_turmas 
         ");
 
         $stmt->execute();
@@ -42,7 +42,7 @@ class Turma extends Database
             SELECT
                 id, nome, ano, turno_id
             FROM
-                imdaz_turmas 
+                dazim_turmas 
             WHERE
                 id = ?
         ");
@@ -64,7 +64,7 @@ class Turma extends Database
         $pdo = self::getConnection();
 
         $stmt = $pdo->prepare("
-            INSERT INTO imdaz_turmas (nome, ano, turno_id)
+            INSERT INTO dazim_turmas (nome, ano, turno_id)
             VALUES (?, ?, ?)
         ");
 
@@ -91,7 +91,7 @@ class Turma extends Database
 
         $stmt = $pdo->prepare("
             UPDATE
-                imdaz_turmas
+                dazim_turmas
             SET
                 nome = ?,
                 ano = ?,
@@ -123,7 +123,7 @@ class Turma extends Database
 
         $stmt = $pdo->prepare("
             DELETE FROM
-                imdaz_turmas
+                dazim_turmas
             WHERE
                 id = ?
         ");

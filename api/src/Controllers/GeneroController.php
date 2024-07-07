@@ -91,6 +91,14 @@ class GeneroController implements ControllerInterface
 
         $generoService = generoService::create($authorization, $body);
 
+        if (isset($generoService['unauthorized'])) {
+            return $response::json([
+                'error' => true,
+                'success' => false,
+                'message' => $generoService['unauthorized']
+            ], 401);
+        }
+
         if (isset($generoService['error'])) {
             return $response::json([
                 'error' => true,

@@ -19,7 +19,7 @@ class Turno extends Database
             SELECT
                 *
             FROM
-                imdaz_turnos 
+                dazim_turnos 
         ");
 
         $stmt->execute();
@@ -42,7 +42,7 @@ class Turno extends Database
             SELECT
                 id, nome
             FROM
-                imdaz_turnos 
+                dazim_turnos 
             WHERE
                 id = ?
         ");
@@ -64,7 +64,7 @@ class Turno extends Database
         $pdo = self::getConnection();
 
         $stmt = $pdo->prepare("
-            INSERT INTO imdaz_turnos (nome)
+            INSERT INTO dazim_turnos (nome)
             VALUES (?)
         ");
 
@@ -89,7 +89,7 @@ class Turno extends Database
 
         $stmt = $pdo->prepare("
             UPDATE
-                imdaz_turnos
+                dazim_turnos
             SET
                 nome = ? 
             WHERE
@@ -114,7 +114,7 @@ class Turno extends Database
 
         $stmt = $pdo->prepare("
             DELETE FROM
-                imdaz_turnos
+                dazim_turnos
             WHERE
                 id = ?
         ");

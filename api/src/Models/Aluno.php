@@ -19,7 +19,7 @@ class Aluno extends Database
             SELECT
                 *
             FROM
-                imdaz_alunos 
+                dazim_alunos 
         ");
 
         $stmt->execute();
@@ -42,7 +42,7 @@ class Aluno extends Database
             SELECT
                 id, nome, cep, rua, bairro, cidade, numero, cpf, rg, emissao_rg, nascimento, telefone, nis, genero_id, etnia_id, tipo_residencia_id, tipo_parentesco_id, escola_id, nome_responsavel, nome_mae, alfabetizado, deficiencias, mae_trabalha_fora, mae_interesse_projetos, renda_familiar_mensal, quantidade_filhos, possui_irmao_instituicao, recebe_bolsa_familia, direito_imagem, possui_banheiro, possui_agua, possui_luz, nota_fiscal_gaucha
             FROM
-                imdaz_alunos 
+                dazim_alunos 
             WHERE
                 id = ?
         ");
@@ -64,7 +64,7 @@ class Aluno extends Database
         $pdo = self::getConnection();
 
         $stmt = $pdo->prepare("
-            INSERT INTO imdaz_alunos (nome, cep, rua, bairro, cidade, numero, cpf, rg, emissao_rg, nascimento, telefone, nis, genero_id, etnia_id, tipo_residencia_id, tipo_parentesco_id, escola_id, nome_responsavel, nome_mae, alfabetizado, deficiencias, mae_trabalha_fora, mae_interesse_projetos, renda_familiar_mensal, quantidade_filhos, possui_irmao_instituicao, recebe_bolsa_familia, direito_imagem, possui_banheiro, possui_agua, possui_luz, nota_fiscal_gaucha)
+            INSERT INTO dazim_alunos (nome, cep, rua, bairro, cidade, numero, cpf, rg, emissao_rg, nascimento, telefone, nis, genero_id, etnia_id, tipo_residencia_id, tipo_parentesco_id, escola_id, nome_responsavel, nome_mae, alfabetizado, deficiencias, mae_trabalha_fora, mae_interesse_projetos, renda_familiar_mensal, quantidade_filhos, possui_irmao_instituicao, recebe_bolsa_familia, direito_imagem, possui_banheiro, possui_agua, possui_luz, nota_fiscal_gaucha)
             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
         ");
 
@@ -122,7 +122,7 @@ class Aluno extends Database
 
         $stmt = $pdo->prepare("
             UPDATE
-                imdaz_alunos
+                dazim_alunos
             SET
                 nome = ?,
                 cep = ?,
@@ -214,7 +214,7 @@ class Aluno extends Database
 
         $stmt = $pdo->prepare("
             DELETE FROM
-                imdaz_alunos
+                dazim_alunos
             WHERE
                 id = ?
         ");
@@ -240,7 +240,7 @@ class Aluno extends Database
             SELECT
                 id, nome, nascimento
             FROM
-                imdaz_alunos 
+                dazim_alunos 
             WHERE
                 DATE_FORMAT(nascimento, '%m-%d') BETWEEN DATE_FORMAT(:data_atual, '%m-%d') AND DATE_FORMAT(:data_semana, '%m-%d')
         ");

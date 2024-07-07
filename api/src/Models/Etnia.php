@@ -19,7 +19,7 @@ class Etnia extends Database
             SELECT
                 *
             FROM
-                imdaz_etnias 
+                dazim_etnias 
         ");
 
         $stmt->execute();
@@ -42,7 +42,7 @@ class Etnia extends Database
             SELECT
                 id, nome
             FROM
-                imdaz_etnias 
+                dazim_etnias 
             WHERE
                 id = ?
         ");
@@ -64,7 +64,7 @@ class Etnia extends Database
         $pdo = self::getConnection();
 
         $stmt = $pdo->prepare("
-            INSERT INTO imdaz_etnias (nome)
+            INSERT INTO dazim_etnias (nome)
             VALUES (?)
         ");
 
@@ -89,7 +89,7 @@ class Etnia extends Database
 
         $stmt = $pdo->prepare("
             UPDATE
-                imdaz_etnias
+                dazim_etnias
             SET
                 nome = ? 
             WHERE
@@ -114,7 +114,7 @@ class Etnia extends Database
 
         $stmt = $pdo->prepare("
             DELETE FROM
-                imdaz_etnias
+                dazim_etnias
             WHERE
                 id = ?
         ");

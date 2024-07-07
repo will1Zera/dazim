@@ -91,6 +91,14 @@ class EtniaController implements ControllerInterface
 
         $etniaService = etniaService::create($authorization, $body);
 
+        if (isset($etniaService['unauthorized'])) {
+            return $response::json([
+                'error' => true,
+                'success' => false,
+                'message' => $etniaService['unauthorized']
+            ], 401);
+        }
+
         if (isset($etniaService['error'])) {
             return $response::json([
                 'error' => true,

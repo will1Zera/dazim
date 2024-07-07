@@ -91,6 +91,14 @@ class TurmaController implements ControllerInterface
 
         $turmaService = turmaService::create($authorization, $body);
 
+        if (isset($turmaService['unauthorized'])) {
+            return $response::json([
+                'error' => true,
+                'success' => false,
+                'message' => $turmaService['unauthorized']
+            ], 401);
+        }
+
         if (isset($turmaService['error'])) {
             return $response::json([
                 'error' => true,

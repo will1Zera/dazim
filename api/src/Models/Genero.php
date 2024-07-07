@@ -19,7 +19,7 @@ class Genero extends Database
             SELECT
                 *
             FROM
-                imdaz_generos 
+                dazim_generos 
         ");
 
         $stmt->execute();
@@ -42,7 +42,7 @@ class Genero extends Database
             SELECT
                 id, nome
             FROM
-                imdaz_generos 
+                dazim_generos 
             WHERE
                 id = ?
         ");
@@ -64,7 +64,7 @@ class Genero extends Database
         $pdo = self::getConnection();
 
         $stmt = $pdo->prepare("
-            INSERT INTO imdaz_generos (nome)
+            INSERT INTO dazim_generos (nome)
             VALUES (?)
         ");
 
@@ -89,7 +89,7 @@ class Genero extends Database
 
         $stmt = $pdo->prepare("
             UPDATE
-                imdaz_generos
+                dazim_generos
             SET
                 nome = ? 
             WHERE
@@ -114,7 +114,7 @@ class Genero extends Database
 
         $stmt = $pdo->prepare("
             DELETE FROM
-                imdaz_generos
+                dazim_generos
             WHERE
                 id = ?
         ");

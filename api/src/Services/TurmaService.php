@@ -28,8 +28,6 @@ class TurmaService implements ServiceInterface
 
             $turmas = Turma::index();
 
-            if(!$turmas) return ['error' => 'Não foi possível encontrar as turmas.'];
-
             return $turmas;
         } catch (PDOException $e) {
             if ($e->errorInfo[0] === 'HY000') return ['error' => 'Não foi possível conectar ao banco de dados.'];

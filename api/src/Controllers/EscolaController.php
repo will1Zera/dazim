@@ -91,6 +91,14 @@ class EscolaController implements ControllerInterface
 
         $escolaService = escolaService::create($authorization, $body);
 
+        if (isset($escolaService['unauthorized'])) {
+            return $response::json([
+                'error' => true,
+                'success' => false,
+                'message' => $escolaService['unauthorized']
+            ], 401);
+        }
+
         if (isset($escolaService['error'])) {
             return $response::json([
                 'error' => true,

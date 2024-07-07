@@ -91,6 +91,14 @@ class TipoResidenciaController implements ControllerInterface
 
         $tipoResidenciaService = tipoResidenciaService::create($authorization, $body);
 
+        if (isset($tipoResidenciaService['unauthorized'])) {
+            return $response::json([
+                'error' => true,
+                'success' => false,
+                'message' => $tipoResidenciaService['unauthorized']
+            ], 401);
+        }
+
         if (isset($tipoResidenciaService['error'])) {
             return $response::json([
                 'error' => true,

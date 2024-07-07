@@ -28,8 +28,6 @@ class GeneroService implements ServiceInterface
 
             $generos = Genero::index();
 
-            if(!$generos) return ['error' => 'Não foi possível encontrar os gêneros.'];
-
             return $generos;
         } catch (PDOException $e) {
             if ($e->errorInfo[0] === 'HY000') return ['error' => 'Não foi possível conectar ao banco de dados.'];

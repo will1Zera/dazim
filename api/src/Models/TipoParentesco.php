@@ -19,7 +19,7 @@ class TipoParentesco extends Database
             SELECT
                 *
             FROM
-                imdaz_tipo_parentescos 
+                dazim_tipo_parentescos 
         ");
 
         $stmt->execute();
@@ -42,7 +42,7 @@ class TipoParentesco extends Database
             SELECT
                 id, nome
             FROM
-                imdaz_tipo_parentescos 
+                dazim_tipo_parentescos 
             WHERE
                 id = ?
         ");
@@ -64,7 +64,7 @@ class TipoParentesco extends Database
         $pdo = self::getConnection();
 
         $stmt = $pdo->prepare("
-            INSERT INTO imdaz_tipo_parentescos (nome)
+            INSERT INTO dazim_tipo_parentescos (nome)
             VALUES (?)
         ");
 
@@ -89,7 +89,7 @@ class TipoParentesco extends Database
 
         $stmt = $pdo->prepare("
             UPDATE
-                imdaz_tipo_parentescos
+                dazim_tipo_parentescos
             SET
                 nome = ? 
             WHERE
@@ -114,7 +114,7 @@ class TipoParentesco extends Database
 
         $stmt = $pdo->prepare("
             DELETE FROM
-                imdaz_tipo_parentescos
+                dazim_tipo_parentescos
             WHERE
                 id = ?
         ");

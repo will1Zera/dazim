@@ -28,8 +28,6 @@ class EtniaService implements ServiceInterface
 
             $etnias = Etnia::index();
 
-            if(!$etnias) return ['error' => 'Não foi possível encontrar as etnias.'];
-
             return $etnias;
         } catch (PDOException $e) {
             if ($e->errorInfo[0] === 'HY000') return ['error' => 'Não foi possível conectar ao banco de dados.'];

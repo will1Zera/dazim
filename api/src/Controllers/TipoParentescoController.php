@@ -91,6 +91,14 @@ class TipoParentescoController implements ControllerInterface
 
         $tipoParentescoService = tipoParentescoService::create($authorization, $body);
 
+        if (isset($tipoParentescoService['unauthorized'])) {
+            return $response::json([
+                'error' => true,
+                'success' => false,
+                'message' => $tipoParentescoService['unauthorized']
+            ], 401);
+        }
+
         if (isset($tipoParentescoService['error'])) {
             return $response::json([
                 'error' => true,

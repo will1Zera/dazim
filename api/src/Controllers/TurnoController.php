@@ -91,6 +91,14 @@ class TurnoController implements ControllerInterface
 
         $turnoService = turnoService::create($authorization, $body);
 
+        if (isset($turnoService['unauthorized'])) {
+            return $response::json([
+                'error' => true,
+                'success' => false,
+                'message' => $turnoService['unauthorized']
+            ], 401);
+        }
+
         if (isset($turnoService['error'])) {
             return $response::json([
                 'error' => true,

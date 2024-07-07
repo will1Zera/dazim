@@ -28,8 +28,6 @@ class AlunoService implements ServiceInterface
 
             $alunos = Aluno::index();
 
-            if(!$alunos) return ['error' => 'Não foi possível encontrar os alunos.'];
-
             return $alunos;
         } catch (PDOException $e) {
             if ($e->errorInfo[0] === 'HY000') return ['error' => 'Não foi possível conectar ao banco de dados.'];

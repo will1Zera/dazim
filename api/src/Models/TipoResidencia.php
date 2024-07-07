@@ -19,7 +19,7 @@ class TipoResidencia extends Database
             SELECT
                 *
             FROM
-                imdaz_tipo_residencias 
+                dazim_tipo_residencias 
         ");
 
         $stmt->execute();
@@ -42,7 +42,7 @@ class TipoResidencia extends Database
             SELECT
                 id, nome
             FROM
-                imdaz_tipo_residencias 
+                dazim_tipo_residencias 
             WHERE
                 id = ?
         ");
@@ -64,7 +64,7 @@ class TipoResidencia extends Database
         $pdo = self::getConnection();
 
         $stmt = $pdo->prepare("
-            INSERT INTO imdaz_tipo_residencias (nome)
+            INSERT INTO dazim_tipo_residencias (nome)
             VALUES (?)
         ");
 
@@ -89,7 +89,7 @@ class TipoResidencia extends Database
 
         $stmt = $pdo->prepare("
             UPDATE
-                imdaz_tipo_residencias
+                dazim_tipo_residencias
             SET
                 nome = ? 
             WHERE
@@ -114,7 +114,7 @@ class TipoResidencia extends Database
 
         $stmt = $pdo->prepare("
             DELETE FROM
-                imdaz_tipo_residencias
+                dazim_tipo_residencias
             WHERE
                 id = ?
         ");
