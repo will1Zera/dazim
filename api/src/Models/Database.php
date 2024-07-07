@@ -13,7 +13,7 @@ class Database
     */
     public static function getConnection()
     {
-        $pdo = new PDO('mysql:host=localhost;dbname=imdaz', 'root', '');
+        $pdo = new PDO('mysql:host=localhost;dbname=dazim', 'root', '');
 
         return $pdo;
     }

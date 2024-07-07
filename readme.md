@@ -1,42 +1,43 @@
 <div align="center">
     <br>
-    <h1 align="center"> API IMDAZ</h1>
+    <h1 align="center">Dazim</h1>
     <p align="center">
         <a href="#sobre-o-desafio">Sobre</a> | 
-	<a href="#ambiente-local">Ambiente</a> | <a href="#banco-de-dados">Banco de dados</a>
+	<a href="#ambiente-local">Ambiente</a>
     </p>
     <p align="center"> 
-        <i><h5>Criação de uma api para o Instituto de Menores Dom Antônio Zattera</a></h5></i
+        <i><h5>Criação de um sistema de gestão para instituições de ensino.</a></h5></i>
     </p>
 </div>
 <br>
 
 ## Sobre o projeto
-Foi desenvolvido uma API para substituir o uso do excel para guardar e manipular os dados do IMDAZ, com algumas rotas e funcionalidades, utilizando php e mysql. 
+Foi desenvolvido um sistema de gestão com foco para instituições de ensino, com funcionalidades para administrar e organizar alunos e turmas, utilizando javascript, php e mysql. 
 
 
 ##### Tecnologias utilizadas:
+- HTML/CSS
 - PHP
+- Javascript
 - MySQL
 
 ##### Pré requisitos:
 - <a href="https://www.apachefriends.org/pt_br/download.html">XAMPP</a>
-- <a href="https://www.postman.com/downloads/">POSTMAN</a>
 
 ## Ambiente local
-Primeiramente, você deve clonar o projeto de api na sua máquina ou realizar o download. É ideal que essa api seja colocada em seu servidor, caso utilize o XAMPP, coloque na pasta htdocs.
+Primeiramente, você deve clonar o projeto na sua máquina ou realizar o download. É ideal que esse projeto seja colocado em seu servidor, caso utilize o XAMPP, coloque na pasta htdocs.
 
 ```sh
-git clone https://github.com/will1Zera/IMDAZ.git
+git clone https://github.com/will1Zera/dazim.git
 ```
 
-## Executando a api
+## Executando
 Depois de clonar ou baixar o projeto, você deve configurar seu servidor, caso utilize o XAMPP, deve ativar o Apache e MySQL no Painel de Controle. Para testar se ocorreu tudo certo, poderá acessar a seguinte rota no navegador:
 
 ```sh
-http://localhost/imdaz/api
+http://localhost/dazim/api
 ```
-Em caso de sucesso, é retornado a seguinte mensagem: "Welcome to the IMDAZ api!".
+Em caso de sucesso, é retornado a seguinte mensagem: "Welcome to the Dazim!".
 
 ## Banco de dados
 1. Acesse o arquivo Database.php e realize a conexão com seu banco de dados.
@@ -45,11 +46,6 @@ Em caso de sucesso, é retornado a seguinte mensagem: "Welcome to the IMDAZ api!
 ```sh
 php Migrations.php
 ```
-### Diagrama do banco de dados
-
-<p align="center">
-  <img src="./api/IMDAZ.drawio.png" align="center" style="border-radius: 10px" />
-</p>
 
 
 ## Importante
