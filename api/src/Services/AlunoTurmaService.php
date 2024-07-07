@@ -8,7 +8,7 @@ use Exception;
 use PDOException;
 use App\Models\AlunoTurma;
 
-class AlunoTurmaService implements ServiceInterface
+class AlunoTurmaService extends ServiceBase implements ServiceInterface
 {
     /**
     * Método estático responsável por buscar alunos e turmas.
@@ -20,21 +20,18 @@ class AlunoTurmaService implements ServiceInterface
     public static function index(mixed $authorization)
     {
         try {
-            if (isset($authorization['error'])) return ['unauthorized' => $authorization['error']];
-
-            $userFromJWT = JWT::verify($authorization);
-
-            if(!$userFromJWT) return ['unauthorized' => 'Realize o login para acessar esse recurso.'];
+            $check = self::checkAuthorization($authorization);
+            if (isset($check['unauthorized'])) {
+                return $check;
+            }
 
             $alunos_turmas = AlunoTurma::index();
 
             return $alunos_turmas;
         } catch (PDOException $e) {
-            if ($e->errorInfo[0] === 'HY000') return ['error' => 'Não foi possível conectar ao banco de dados.'];
-            if ($e->errorInfo[0] === 'HY093') return ['error' => 'Não foi possível encontrar a tabela.'];
-            return ['error' => $e->getMessage()];
+            return self::handlePDOException($e);
         } catch (Exception $e) {
-            return ['error' => $e->getMessage()];
+            return self::handleException($e);
         }
     }
 
@@ -49,11 +46,10 @@ class AlunoTurmaService implements ServiceInterface
     public static function fetch(mixed $authorization, int|string $id)
     {
         try {
-            if (isset($authorization['error'])) return ['unauthorized' => $authorization['error']];
-
-            $userFromJWT = JWT::verify($authorization);
-
-            if(!$userFromJWT) return ['unauthorized' => 'Realize o login para acessar esse recurso.'];
+            $check = self::checkAuthorization($authorization);
+            if (isset($check['unauthorized'])) {
+                return $check;
+            }
 
             $aluno_turma = AlunoTurma::find($id);
 
@@ -61,11 +57,9 @@ class AlunoTurmaService implements ServiceInterface
 
             return $aluno_turma;
         } catch (PDOException $e) {
-            if ($e->errorInfo[0] === 'HY000') return ['error' => 'Não foi possível conectar ao banco de dados.'];
-            if ($e->errorInfo[0] === 'HY093') return ['error' => 'Não foi possível encontrar a tabela.'];
-            return ['error' => $e->getMessage()];
+            return self::handlePDOException($e);
         } catch (Exception $e) {
-            return ['error' => $e->getMessage()];
+            return self::handleException($e);
         }
     }
 
@@ -80,11 +74,10 @@ class AlunoTurmaService implements ServiceInterface
     public static function create(mixed $authorization, array $data)
     {
         try {
-            if (isset($authorization['error'])) return ['unauthorized' => $authorization['error']];
-
-            $userFromJWT = JWT::verify($authorization);
-
-            if(!$userFromJWT) return ['unauthorized' => 'Realize o login para acessar esse recurso.'];
+            $check = self::checkAuthorization($authorization);
+            if (isset($check['unauthorized'])) {
+                return $check;
+            }
 
             $fields = Validator::validate([
                 'aluno_id' => $data['aluno_id'] ?? '',
@@ -97,11 +90,9 @@ class AlunoTurmaService implements ServiceInterface
 
             return "Aluno e turma criada com sucesso!";
         } catch (PDOException $e) {
-            if ($e->errorInfo[0] === 'HY000') return ['error' => 'Não foi possível conectar ao banco de dados.'];
-            if ($e->errorInfo[0] === 'HY093') return ['error' => 'Não foi possível encontrar a tabela.'];
-            return ['error' => $e->getMessage()];
+            return self::handlePDOException($e);
         } catch (Exception $e) {
-            return ['error' => $e->getMessage()];
+            return self::handleException($e);
         }
     }
 
@@ -117,11 +108,10 @@ class AlunoTurmaService implements ServiceInterface
     public static function update(mixed $authorization, array $data, int|string $id)
     {
         try {
-            if (isset($authorization['error'])) return ['unauthorized' => $authorization['error']];
-
-            $userFromJWT = JWT::verify($authorization);
-
-            if(!$userFromJWT) return ['unauthorized' => 'Realize o login para acessar esse recurso.'];
+            $check = self::checkAuthorization($authorization);
+            if (isset($check['unauthorized'])) {
+                return $check;
+            }
 
             $fields = Validator::validate([
                 'aluno_id' => $data['aluno_id'] ?? '',
@@ -134,11 +124,9 @@ class AlunoTurmaService implements ServiceInterface
 
             return "Aluno e turma atualizada com sucesso.";
         } catch (PDOException $e) {
-            if ($e->errorInfo[0] === 'HY000') return ['error' => 'Não foi possível conectar ao banco de dados.'];
-            if ($e->errorInfo[0] === 'HY093') return ['error' => 'Não foi possível encontrar a tabela.'];
-            return ['error' => $e->getMessage()];
+            return self::handlePDOException($e);
         } catch (Exception $e) {
-            return ['error' => $e->getMessage()];
+            return self::handleException($e);
         }
     }
 
@@ -153,11 +141,10 @@ class AlunoTurmaService implements ServiceInterface
     public static function delete(mixed $authorization, int|string $id)
     {
         try {
-            if (isset($authorization['error'])) return ['unauthorized' => $authorization['error']];
-            
-            $userFromJWT = JWT::verify($authorization);
-
-            if(!$userFromJWT) return ['unauthorized' => 'Realize o login para acessar esse recurso.'];
+            $check = self::checkAuthorization($authorization);
+            if (isset($check['unauthorized'])) {
+                return $check;
+            }
 
             $aluno_turma = AlunoTurma::delete($id);
 
@@ -165,11 +152,9 @@ class AlunoTurmaService implements ServiceInterface
 
             return "Aluno e turma removida com sucesso.";
         } catch (PDOException $e) {
-            if ($e->errorInfo[0] === 'HY000') return ['error' => 'Não foi possível conectar ao banco de dados.'];
-            if ($e->errorInfo[0] === 'HY093') return ['error' => 'Não foi possível encontrar a tabela.'];
-            return ['error' => $e->getMessage()];
+            return self::handlePDOException($e);
         } catch (Exception $e) {
-            return ['error' => $e->getMessage()];
+            return self::handleException($e);
         }
     }
 }

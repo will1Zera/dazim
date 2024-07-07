@@ -2,13 +2,12 @@
 
 namespace App\Services;
 
-use App\Http\JWT;
 use App\Utils\Validator;
 use Exception;
 use PDOException;
 use App\Models\Genero;
 
-class GeneroService implements ServiceInterface
+class GeneroService extends ServiceBase implements ServiceInterface
 {
     /**
     * Método estático responsável por buscar gêneros.
@@ -20,21 +19,18 @@ class GeneroService implements ServiceInterface
     public static function index(mixed $authorization)
     {
         try {
-            if (isset($authorization['error'])) return ['unauthorized' => $authorization['error']];
-
-            $userFromJWT = JWT::verify($authorization);
-
-            if(!$userFromJWT) return ['unauthorized' => 'Realize o login para acessar esse recurso.'];
+            $check = self::checkAuthorization($authorization);
+            if (isset($check['unauthorized'])) {
+                return $check;
+            }
 
             $generos = Genero::index();
 
             return $generos;
         } catch (PDOException $e) {
-            if ($e->errorInfo[0] === 'HY000') return ['error' => 'Não foi possível conectar ao banco de dados.'];
-            if ($e->errorInfo[0] === 'HY093') return ['error' => 'Não foi possível encontrar a tabela.'];
-            return ['error' => $e->getMessage()];
+            return self::handlePDOException($e);
         } catch (Exception $e) {
-            return ['error' => $e->getMessage()];
+            return self::handleException($e);
         }
     }
 
@@ -49,11 +45,10 @@ class GeneroService implements ServiceInterface
     public static function fetch(mixed $authorization, int|string $id)
     {
         try {
-            if (isset($authorization['error'])) return ['unauthorized' => $authorization['error']];
-
-            $userFromJWT = JWT::verify($authorization);
-
-            if(!$userFromJWT) return ['unauthorized' => 'Realize o login para acessar esse recurso.'];
+            $check = self::checkAuthorization($authorization);
+            if (isset($check['unauthorized'])) {
+                return $check;
+            }
 
             $genero = Genero::find($id);
 
@@ -61,11 +56,9 @@ class GeneroService implements ServiceInterface
 
             return $genero;
         } catch (PDOException $e) {
-            if ($e->errorInfo[0] === 'HY000') return ['error' => 'Não foi possível conectar ao banco de dados.'];
-            if ($e->errorInfo[0] === 'HY093') return ['error' => 'Não foi possível encontrar a tabela.'];
-            return ['error' => $e->getMessage()];
+            return self::handlePDOException($e);
         } catch (Exception $e) {
-            return ['error' => $e->getMessage()];
+            return self::handleException($e);
         }
     }
 
@@ -80,11 +73,10 @@ class GeneroService implements ServiceInterface
     public static function create(mixed $authorization, array $data)
     {
         try {
-            if (isset($authorization['error'])) return ['unauthorized' => $authorization['error']];
-
-            $userFromJWT = JWT::verify($authorization);
-
-            if(!$userFromJWT) return ['unauthorized' => 'Realize o login para acessar esse recurso.'];
+            $check = self::checkAuthorization($authorization);
+            if (isset($check['unauthorized'])) {
+                return $check;
+            }
 
             $fields = Validator::validate([
                 'nome' => $data['nome'] ?? '',
@@ -96,11 +88,9 @@ class GeneroService implements ServiceInterface
 
             return "Gênero criado com sucesso!";
         } catch (PDOException $e) {
-            if ($e->errorInfo[0] === 'HY000') return ['error' => 'Não foi possível conectar ao banco de dados.'];
-            if ($e->errorInfo[0] === 'HY093') return ['error' => 'Não foi possível encontrar a tabela.'];
-            return ['error' => $e->getMessage()];
+            return self::handlePDOException($e);
         } catch (Exception $e) {
-            return ['error' => $e->getMessage()];
+            return self::handleException($e);
         }
     }
 
@@ -116,11 +106,10 @@ class GeneroService implements ServiceInterface
     public static function update(mixed $authorization, array $data, int|string $id)
     {
         try {
-            if (isset($authorization['error'])) return ['unauthorized' => $authorization['error']];
-
-            $userFromJWT = JWT::verify($authorization);
-
-            if(!$userFromJWT) return ['unauthorized' => 'Realize o login para acessar esse recurso.'];
+            $check = self::checkAuthorization($authorization);
+            if (isset($check['unauthorized'])) {
+                return $check;
+            }
 
             $fields = Validator::validate([
                 'nome' => $data['nome'] ?? ''
@@ -132,11 +121,9 @@ class GeneroService implements ServiceInterface
 
             return "Gênero atualizado com sucesso.";
         } catch (PDOException $e) {
-            if ($e->errorInfo[0] === 'HY000') return ['error' => 'Não foi possível conectar ao banco de dados.'];
-            if ($e->errorInfo[0] === 'HY093') return ['error' => 'Não foi possível encontrar a tabela.'];
-            return ['error' => $e->getMessage()];
+            return self::handlePDOException($e);
         } catch (Exception $e) {
-            return ['error' => $e->getMessage()];
+            return self::handleException($e);
         }
     }
 
@@ -151,11 +138,10 @@ class GeneroService implements ServiceInterface
     public static function delete(mixed $authorization, int|string $id)
     {
         try {
-            if (isset($authorization['error'])) return ['unauthorized' => $authorization['error']];
-            
-            $userFromJWT = JWT::verify($authorization);
-
-            if(!$userFromJWT) return ['unauthorized' => 'Realize o login para acessar esse recurso.'];
+            $check = self::checkAuthorization($authorization);
+            if (isset($check['unauthorized'])) {
+                return $check;
+            }
 
             $genero = Genero::delete($id);
 
@@ -163,11 +149,9 @@ class GeneroService implements ServiceInterface
 
             return "Gênero removido com sucesso.";
         } catch (PDOException $e) {
-            if ($e->errorInfo[0] === 'HY000') return ['error' => 'Não foi possível conectar ao banco de dados.'];
-            if ($e->errorInfo[0] === 'HY093') return ['error' => 'Não foi possível encontrar a tabela.'];
-            return ['error' => $e->getMessage()];
+            return self::handlePDOException($e);
         } catch (Exception $e) {
-            return ['error' => $e->getMessage()];
+            return self::handleException($e);
         }
     }
 }

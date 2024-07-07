@@ -8,7 +8,7 @@ use Exception;
 use PDOException;
 use App\Models\User;
 
-class UserService
+class UserService extends ServiceBase
 {
     /**
     * Método estático responsável por criar um novo usuário.
@@ -34,12 +34,9 @@ class UserService
 
             return "Usuário criado com sucesso!";
         } catch (PDOException $e) {
-            if ($e->errorInfo[0] === 'HY000') return ['error' => 'Não foi possível conectar ao banco de dados.'];
-            if ($e->errorInfo[0] === 'HY093') return ['error' => 'Não foi possível encontrar a tabela.'];
-            if ($e->errorInfo[0] === '23000') return ['error' => 'Não foi possível criar a conta, e-mail já está em uso.'];
-            return ['error' => $e->getMessage()];
+            return self::handlePDOException($e);
         } catch (Exception $e) {
-            return ['error' => $e->getMessage()];
+            return self::handleException($e);
         }
     }
 
@@ -64,11 +61,9 @@ class UserService
             
             return JWT::generate($user);
         } catch (PDOException $e) {
-            if ($e->errorInfo[0] === 'HY000') return ['error' => 'Não foi possível conectar ao banco de dados.'];
-            if ($e->errorInfo[0] === 'HY093') return ['error' => 'Não foi possível encontrar a tabela.'];
-            return ['error' => $e->getMessage()];
+            return self::handlePDOException($e);
         } catch (Exception $e) {
-            return ['error' => $e->getMessage()];
+            return self::handleException($e);
         }
     }
 
@@ -94,11 +89,9 @@ class UserService
 
             return $user;
         } catch (PDOException $e) {
-            if ($e->errorInfo[0] === 'HY000') return ['error' => 'Não foi possível conectar ao banco de dados.'];
-            if ($e->errorInfo[0] === 'HY093') return ['error' => 'Não foi possível encontrar a tabela.'];
-            return ['error' => $e->getMessage()];
+            return self::handlePDOException($e);
         } catch (Exception $e) {
-            return ['error' => $e->getMessage()];
+            return self::handleException($e);
         }
     }
 
@@ -129,11 +122,9 @@ class UserService
 
             return "Usuário atualizado com sucesso.";
         } catch (PDOException $e) {
-            if ($e->errorInfo[0] === 'HY000') return ['error' => 'Não foi possível conectar ao banco de dados.'];
-            if ($e->errorInfo[0] === 'HY093') return ['error' => 'Não foi possível encontrar a tabela.'];
-            return ['error' => $e->getMessage()];
+            return self::handlePDOException($e);
         } catch (Exception $e) {
-            return ['error' => $e->getMessage()];
+            return self::handleException($e);
         }
     }
 
@@ -160,11 +151,9 @@ class UserService
 
             return "Usuário removido com sucesso.";
         } catch (PDOException $e) {
-            if ($e->errorInfo[0] === 'HY000') return ['error' => 'Não foi possível conectar ao banco de dados.'];
-            if ($e->errorInfo[0] === 'HY093') return ['error' => 'Não foi possível encontrar a tabela.'];
-            return ['error' => $e->getMessage()];
+            return self::handlePDOException($e);
         } catch (Exception $e) {
-            return ['error' => $e->getMessage()];
+            return self::handleException($e);
         }
     }
 }

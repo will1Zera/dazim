@@ -8,7 +8,7 @@ use Exception;
 use PDOException;
 use App\Models\TipoResidencia;
 
-class TipoResidenciaService implements ServiceInterface
+class TipoResidenciaService extends ServiceBase implements ServiceInterface
 {
     /**
     * Método estático responsável por buscar tipos de residência.
@@ -20,21 +20,18 @@ class TipoResidenciaService implements ServiceInterface
     public static function index(mixed $authorization)
     {
         try {
-            if (isset($authorization['error'])) return ['unauthorized' => $authorization['error']];
-
-            $userFromJWT = JWT::verify($authorization);
-
-            if(!$userFromJWT) return ['unauthorized' => 'Realize o login para acessar esse recurso.'];
+            $check = self::checkAuthorization($authorization);
+            if (isset($check['unauthorized'])) {
+                return $check;
+            }
 
             $residencias = TipoResidencia::index();
 
             return $residencias;
         } catch (PDOException $e) {
-            if ($e->errorInfo[0] === 'HY000') return ['error' => 'Não foi possível conectar ao banco de dados.'];
-            if ($e->errorInfo[0] === 'HY093') return ['error' => 'Não foi possível encontrar a tabela.'];
-            return ['error' => $e->getMessage()];
+            return self::handlePDOException($e);
         } catch (Exception $e) {
-            return ['error' => $e->getMessage()];
+            return self::handleException($e);
         }
     }
 
@@ -49,11 +46,10 @@ class TipoResidenciaService implements ServiceInterface
     public static function fetch(mixed $authorization, int|string $id)
     {
         try {
-            if (isset($authorization['error'])) return ['unauthorized' => $authorization['error']];
-
-            $userFromJWT = JWT::verify($authorization);
-
-            if(!$userFromJWT) return ['unauthorized' => 'Realize o login para acessar esse recurso.'];
+            $check = self::checkAuthorization($authorization);
+            if (isset($check['unauthorized'])) {
+                return $check;
+            }
 
             $residencia = TipoResidencia::find($id);
 
@@ -61,11 +57,9 @@ class TipoResidenciaService implements ServiceInterface
 
             return $residencia;
         } catch (PDOException $e) {
-            if ($e->errorInfo[0] === 'HY000') return ['error' => 'Não foi possível conectar ao banco de dados.'];
-            if ($e->errorInfo[0] === 'HY093') return ['error' => 'Não foi possível encontrar a tabela.'];
-            return ['error' => $e->getMessage()];
+            return self::handlePDOException($e);
         } catch (Exception $e) {
-            return ['error' => $e->getMessage()];
+            return self::handleException($e);
         }
     }
 
@@ -80,11 +74,10 @@ class TipoResidenciaService implements ServiceInterface
     public static function create(mixed $authorization, array $data)
     {
         try {
-            if (isset($authorization['error'])) return ['unauthorized' => $authorization['error']];
-
-            $userFromJWT = JWT::verify($authorization);
-
-            if(!$userFromJWT) return ['unauthorized' => 'Realize o login para acessar esse recurso.'];
+            $check = self::checkAuthorization($authorization);
+            if (isset($check['unauthorized'])) {
+                return $check;
+            }
 
             $fields = Validator::validate([
                 'nome' => $data['nome'] ?? '',
@@ -96,11 +89,9 @@ class TipoResidenciaService implements ServiceInterface
 
             return "Tipo de residência criado com sucesso!";
         } catch (PDOException $e) {
-            if ($e->errorInfo[0] === 'HY000') return ['error' => 'Não foi possível conectar ao banco de dados.'];
-            if ($e->errorInfo[0] === 'HY093') return ['error' => 'Não foi possível encontrar a tabela.'];
-            return ['error' => $e->getMessage()];
+            return self::handlePDOException($e);
         } catch (Exception $e) {
-            return ['error' => $e->getMessage()];
+            return self::handleException($e);
         }
     }
 
@@ -116,11 +107,10 @@ class TipoResidenciaService implements ServiceInterface
     public static function update(mixed $authorization, array $data, int|string $id)
     {
         try {
-            if (isset($authorization['error'])) return ['unauthorized' => $authorization['error']];
-
-            $userFromJWT = JWT::verify($authorization);
-
-            if(!$userFromJWT) return ['unauthorized' => 'Realize o login para acessar esse recurso.'];
+            $check = self::checkAuthorization($authorization);
+            if (isset($check['unauthorized'])) {
+                return $check;
+            }
 
             $fields = Validator::validate([
                 'nome' => $data['nome'] ?? ''
@@ -132,11 +122,9 @@ class TipoResidenciaService implements ServiceInterface
 
             return "Tipo de residência atualizado com sucesso.";
         } catch (PDOException $e) {
-            if ($e->errorInfo[0] === 'HY000') return ['error' => 'Não foi possível conectar ao banco de dados.'];
-            if ($e->errorInfo[0] === 'HY093') return ['error' => 'Não foi possível encontrar a tabela.'];
-            return ['error' => $e->getMessage()];
+            return self::handlePDOException($e);
         } catch (Exception $e) {
-            return ['error' => $e->getMessage()];
+            return self::handleException($e);
         }
     }
 
@@ -151,11 +139,10 @@ class TipoResidenciaService implements ServiceInterface
     public static function delete(mixed $authorization, int|string $id)
     {
         try {
-            if (isset($authorization['error'])) return ['unauthorized' => $authorization['error']];
-            
-            $userFromJWT = JWT::verify($authorization);
-
-            if(!$userFromJWT) return ['unauthorized' => 'Realize o login para acessar esse recurso.'];
+            $check = self::checkAuthorization($authorization);
+            if (isset($check['unauthorized'])) {
+                return $check;
+            }
 
             $residencia = TipoResidencia::delete($id);
 
@@ -163,11 +150,9 @@ class TipoResidenciaService implements ServiceInterface
 
             return "Tipo de residência removido com sucesso.";
         } catch (PDOException $e) {
-            if ($e->errorInfo[0] === 'HY000') return ['error' => 'Não foi possível conectar ao banco de dados.'];
-            if ($e->errorInfo[0] === 'HY093') return ['error' => 'Não foi possível encontrar a tabela.'];
-            return ['error' => $e->getMessage()];
+            return self::handlePDOException($e);
         } catch (Exception $e) {
-            return ['error' => $e->getMessage()];
+            return self::handleException($e);
         }
     }
 }
