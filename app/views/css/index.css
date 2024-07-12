@@ -1,0 +1,91 @@
+/* ------ Google fonts ------ */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@400;500;600&display=swap');
+
+/* ------ Variáveis css ------ */
+:root{
+  /* Cores */
+  --white-color: #FFF;
+  --black-color: #101623;
+  --red-color: #FF5C5C;
+  --green-color: #199A8E;
+  --green-color-dark: #14776d;
+  --gray-color: ##717784;
+
+  --input-placeholder-color: #A1A8B0;
+  --input-border-color: #E5E7EB;
+  --input-background-color: #F9FAFB;
+
+  /* ------ Fontes ------ */
+  --body-font: 'Poppins', sans-serif;
+
+  --big-font-size: 3.5rem;
+  --h1-font-size: 2.25rem;
+  --h2-font-size: 1.5rem;
+  --h3-font-size: 1.25rem;
+  --normal-font-size: 1rem;
+  --small-font-size: 0.875rem;
+  --smaller-font-size: 0.813rem;
+  --tiny-font-size: 0.625rem;
+
+  --normal-font: 400;
+  --medium-font: 500;
+  --semi-bold-font: 600;
+
+  /* ------ Tamanhos ------ */
+
+  --input-radius: 0.8rem;
+  --button-radius: 2rem;
+} 
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+}
+  
+body,
+button,
+input,
+textarea{
+    font-family: var(--body-font);
+}
+  
+body{
+    background-color: var(--white-color);
+    margin-bottom: 80px;
+}
+
+a{
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.form-control{
+    transition: .5s;
+}
+
+.form-control:focus{ 
+    border-color: var(--green-color);
+    box-shadow: 0 0 0 0.2rem rgba(0, 255, 0, 0.25);
+}
+
+.main__container{
+    margin: 100px auto;
+    max-width: 1200px;
+    padding: 0 20px;
+}
+
+::-webkit-scrollbar{
+    width: 8px;
+}
+
+::-webkit-scrollbar-track{
+    background-color: var(--white-color);
+}
+
+::-webkit-scrollbar-thumb{
+    background-color: var(--green-color);
+    border-radius: 6px;
+}

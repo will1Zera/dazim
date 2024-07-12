@@ -1,0 +1,253 @@
+header{
+    width: 100%;
+    height: 70px;
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 100;
+    transition: all 300ms;
+    background: var(--green-color);
+}
+
+.header__container{
+    max-width: 1200px;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+    padding: 0px 20px;
+}
+
+.header__title{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--white-color);
+    font-size: var(--h2-font-size);
+}
+
+.header__container-nav{
+    position: relative;
+    height: 100%;
+}
+
+nav{
+    height: 100%;
+}
+
+nav ul{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+nav ul li{
+    margin: 0px 20px;
+}
+
+.header__li{
+    color: var(--white-color);
+    font-size: 15px;
+    text-decoration: none;
+    position: relative;
+}
+
+.header__li::after{
+    content: " ";
+    width: 0%;
+    height: 1.5px;
+    background-color: var(--white-color);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transition: .5s ease-in-out;
+}
+
+.header__li:hover::after{
+    width: 100%;
+}
+
+.nav_mod{
+    height: 70px;
+    box-shadow: 1px 1px 10px 0px #00000010;
+    background: var(--green-color);
+    color: var(--white-color);
+}
+
+.header__button-menu{
+    width: 50px;
+    height: 50px;
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    transition: all 300ms;
+    display: none;
+    color: var(--white-color);
+}
+
+.header__button-close{
+    color: var(--white-color);
+    cursor: pointer;
+    display: none;
+    position: relative;
+    padding-bottom: 30px;
+}
+
+.fa-magnifying-glass,
+.fa-plus,
+.fa-user,
+.fa-arrow-right-from-bracket{
+    display: none;
+}
+
+.header__li-login,
+.header__li-register{
+    border: 1px solid var(--white-color);
+    padding: 8px 20px;
+    border-radius: 30px;
+    transition: .5s;
+}
+
+.header__li-login{
+    color: var(--white-color);
+}
+
+.header__li-login:hover{
+    background-color: var(--white-color);
+    color: var(--green-color);
+}
+
+.header__li-register{
+    background-color: var(--white-color);
+    color: var(--green-color);
+}
+
+.header__li-register:hover{
+    border: 1px solid var(--white-color);
+    color: var(--white-color);
+    background-color: transparent;
+}
+
+.fa-user-large,
+.fa-arrow-up-right-from-square{
+    margin-right: 8px;
+    font-size: 14px;
+}
+
+
+/* ------ CSS das Mensagens ------ */
+
+.msg-container{
+    padding: 20px;
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    z-index: 101;
+    animation: slideIn 0.5s ease forwards, slideOut 0.5s ease forwards 3.5s;
+}
+
+@keyframes slideIn {
+    0% {
+        bottom: -100px;
+    }
+    100% {
+        bottom: 0;
+    }
+}
+
+@keyframes slideOut {
+    0% {
+        bottom: 0;
+    }
+    100% {
+        bottom: -100px;
+    }
+}
+
+.msg{
+    margin: 0 auto;
+    padding: 15px 25px;
+    text-align: center;
+    border-radius: .5rem;
+    box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
+}
+
+.msg.error{
+    color: #842029;
+    background-color: #f8d7da;
+}
+
+.msg.success{
+    color: #0f5132;
+    background-color: #d1e7dd;
+}
+
+.fa-x{
+    cursor: pointer;
+    margin-left: 30px;
+    font-size: 13px;
+}
+
+.hidden{
+    display: none;
+}
+
+/* ====== Responsividade ====== */
+
+/* ------ Média ------ */
+
+@media screen and (max-width: 768px){
+    .header__container-nav{
+       display: flex;
+       justify-content: center;
+       align-items: center;
+    }
+
+    .header__button-menu, .header__button-close{
+        display: flex;
+    }
+
+    nav{
+        height: 100%;
+        background: var(--green-color);
+        position: fixed;
+        display: flex;
+        justify-content: center;
+        top: 0;
+        right: -280px;
+        padding: 0px 25px 0px 0px;
+        transition: all 300ms;
+    }
+
+    .header__ul{
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        padding-top: 40px;
+    }
+
+    .move_nav{
+        right: 0px;
+    }
+
+    nav ul{
+        flex-direction: column;
+    }
+
+    nav ul li{
+        margin: 20px 0px;
+    }
+
+    .fa-magnifying-glass,
+    .fa-plus,
+    .fa-user,
+    .fa-arrow-right-from-bracket{
+        display: inline;
+        margin-right: 5px;
+    }
+}

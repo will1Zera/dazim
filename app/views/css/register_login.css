@@ -1,0 +1,128 @@
+/* Register */
+
+#auth-row{
+    justify-content: space-evenly;
+}
+
+.card-btn{
+    color:var(--white-color);
+    background-color: var(--green-color);
+    border-radius: var(--button-radius);
+    width: 100%;
+    transition: .5s;
+    margin-top: 30px;
+}
+
+.card-btn:hover{
+    background-color: var(--green-color-dark);
+    color:var(--white-color);
+}
+
+#register__container h2{
+    text-align: center;
+    color: var(--green-color);
+    margin: 0 auto;
+    font-size: 2.25rem;
+    font-weight: var(--semi-bold-font);
+    margin-top: 8rem;
+}
+
+#auth-row p{
+    text-align: center;
+}
+
+#register__container form{
+    max-width: 400px;
+    margin: 15px auto;
+}
+
+#register__container .card-btn{
+    margin-bottom: 5rem;
+}
+
+
+.form-group input{
+    border-radius: var(--input-radius);
+    background-color: var(--input-background-color);
+}
+
+.form-group input::placeholder {
+    color: var(--input-placeholder-color);
+}
+
+.form-group input:focus{
+    box-shadow: 0 0 0 0;
+    outline: 0;
+    background-color: var(--input-background-color);
+}
+
+.form-group label{
+    padding: 10px 0px 5px 0px;
+}
+
+/* Login */
+
+.fa-lock,
+.fa-id-card,
+.fa-envelope{
+    color: var(--input-placeholder-color);
+    position: relative;
+    top: 36px;
+    right: 42px;
+    font-size: 14px;
+}
+
+.fa-envelope{
+    top: 31px;
+    right: -14px;
+}
+
+.fa-id-card{
+    right: 22px;
+}
+
+#form-group input{
+    padding-left: 40px;
+}
+
+.form__link-password,
+.form__link-register{
+    color: var(--green-color);
+    transition: .5s;
+}
+
+.form__link-password:hover,
+.form__link-register:hover{
+    color: var(--green-color-dark);
+}
+
+.form__link-password{
+    display: block;
+    text-align: end;
+    margin-top: 10px;
+}
+
+.form__text{
+    display: block;
+    text-align: center;
+    margin-top: -40px;
+}
+
+/* Profile */
+
+#profile-row{
+    justify-content: space-evenly;
+}
+
+#profile-row h2{
+    margin-top: 0rem;
+}
+
+#profile-row p{
+    text-align: center;
+}
+
+#auth-row .disabled{
+    background-color: #eeeded;
+}
+
