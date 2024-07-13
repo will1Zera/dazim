@@ -2,11 +2,11 @@
 <section id="sidebar">
     <a href="#" class="brand"><i class="fa fa-ravelry icon"></i> <span data-text="Dazim" class="sidebar-span">Dazim</span></i></a>
     <ul class="side-menu">
-        <li><a href="#"><i class="fa fa-home icon"></i> <span data-text="Home" class="sidebar-span">Home</span></a></li>
+        <li><a href="<?= $URL ?>home"><i class="fa fa-home icon"></i> <span data-text="Home" class="sidebar-span">Home</span></a></li>
         <li>
             <a href="#"><i class="fa fa-tag icon"></i> <span data-text="Cadastros" class="sidebar-span">Cadastros</span></a>
             <ul class="side-dropdown">
-                <li><a href="#"><span data-text="Teste1" class="sidebar-span">Teste1</span></a></li>
+                <li><a href="<?= $URL ?>etnias"><span data-text="Etnias" class="sidebar-span">Etnias</span></a></li>
                 <li><a href="#"><span data-text="Teste2" class="sidebar-span">Teste2</span></a></li>
             </ul>
         </li>

@@ -89,7 +89,7 @@
 
         let form = new FormData(this);
 
-        PostFetch(form, '<?= $API_URL ?>users/create');
+        postFetch(form, '<?= $API_URL ?>users/create');
     });
 
     $('.login-form').on('submit', function (e) {
@@ -97,6 +97,6 @@
 
         let form = new FormData(this);
         
-        PostFetch(form, '<?= $API_URL ?>users/login', '<?= $URL ?>home');
+        postFetch(form, '<?= $API_URL ?>users/login', '<?= $URL ?>home');
     });
 </script>

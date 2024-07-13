@@ -125,7 +125,7 @@ nav .profile-link .profile-option {
 
 /* PAGINA PRINCIPAL */
 main {
-    width: 100%;
+    max-width: 1280px;
     padding: 20px;
 }
 
@@ -146,12 +146,4 @@ main .info-data .card {
     padding: 20px;
     border-radius: var(--default-border-radius);
     box-shadow: 4px 4px 16px rgba(0, 0, 0, 0.05);
-}
-
-@media screen and (max-width: 768px) {
-    #content {
-        position: relative;
-        width: calc(100% - 60px);
-        transition: .5s;
-    }
 }
