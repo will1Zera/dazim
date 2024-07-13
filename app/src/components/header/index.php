@@ -10,11 +10,14 @@
     <!-- Bootstrap -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font-awesome -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet"/>
+    <!-- Boxicons -->
+	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
     <!-- Toastify -->
     <link href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"  rel="stylesheet" type="text/css">
     <!-- CSS -->
     <link href="<?= $URL ?>src/components/header/styles.css" rel="stylesheet"/>
+    <link href="<?= $URL ?>src/components/sidebar/styles.css" rel="stylesheet"/>
 
     <title>Dazim</title>
 

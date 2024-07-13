@@ -1,3 +1,6 @@
-    <script src="<?= $URL ?>src/components/footer/scripts.js"></script>
+    </main>
+</section>
+<script src="<?= $URL ?>src/components/footer/scripts.js"></script>
+<script src="<?= $URL ?>src/components/sidebar/scripts.js"></script>
 </body>
 </html>
