@@ -8,7 +8,7 @@
     <div class="card">
         <div class="head">
             <div>
-                <h2>100</h2>
+                <h2 id="quantidade-alunos">0</h2>
                 <p>Alunos <i class="fa fa-graduation-cap icon" style="margin-left: 5px;"></i></p>
             </div>
         </div>
@@ -16,7 +16,7 @@
     <div class="card">
         <div class="head">
             <div>
-                <h2>8</h2>
+                <h2 id="quantidade-turmas">0</h2>
                 <p>Turmas <i class="fa fa-folder-open icon" style="margin-left: 5px;"></i></p>
             </div>
         </div>
@@ -38,6 +38,7 @@
     $(document).ready(async function() {
         indexPage();
         indexUser();
+        indexCount();
     });
 
     async function indexPage(){
@@ -71,5 +72,13 @@
         const row = template.replace('{{nome_usuario}}', data.name);
 
         body.append(row);
+    }
+
+    async function indexCount(){
+        const data_alunos = await getFetch('<?= $API_URL ?>alunos');
+        const data_turmas = await getFetch('<?= $API_URL ?>turmas');
+        
+        $('#quantidade-alunos').text(data_alunos.length);
+        $('#quantidade-turmas').text(data_turmas.length);
     }
 </script>
