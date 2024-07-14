@@ -1,4 +1,8 @@
-<h2 class="title">Home</h2>
+<h2 class="title" id="nome-usuario">
+    <script id="nome-usuario-template" type="text/x-template">
+        <li>Olá, {{nome_usuario}} 👋</li>
+    </script>
+</h2>
 
 <div class="info-data">
     <div class="card">
@@ -33,6 +37,7 @@
 <script>
     $(document).ready(async function() {
         indexPage();
+        indexUser();
     });
 
     async function indexPage(){
@@ -55,5 +60,16 @@
             const row = '<li>Nenhum aniversariante encontrado.</li>';
             lista_body.append(row);
         }
+    }
+
+    async function indexUser(){
+        const data = await getFetch('<?= $API_URL ?>users/fetch');
+        const body = $('#nome-usuario');
+        const template = $('#nome-usuario-template').html();
+        body.empty();
+
+        const row = template.replace('{{nome_usuario}}', data.name);
+
+        body.append(row);
     }
 </script>

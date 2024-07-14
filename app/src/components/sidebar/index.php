@@ -25,10 +25,37 @@
         <i class="fa fa-bars icon toggle-sidebar"></i>
         <div class="profile">
             <ul class="profile-link">
-                <li><a href="#" class="profile-option"><i class="fa fa-user icon"></i></a></li>
+                <li><a href="#" class="profile-option" data-toggle="modal" data-target="#editProfileModal"><i class="fa fa-user icon"></i></a></li>
                 <li><a href="#" id="logout" class="profile-option"><i class="fa fa-sign-out icon"></i></a></li>
             </ul>
         </div>
     </nav>
+
+    <!-- Modal de editar perfil -->
+    <div class="modal fade" id="editProfileModal" tabindex="-1" role="dialog" aria-labelledby="editProfileModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editProfileModalLabel">Editar perfil</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="editProfileForm">
+                        <div class="mb-3">
+                            <label for="nome" class="form-label">Nome*</label>
+                            <input type="text" class="form-control" id="editar-nome-profile" name="nome" placeholder="Digite o nome" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email*</label>
+                            <input type="text" class="form-control" id="editar-email-profile" name="email" placeholder="Digite o email" required>
+                        </div>
+                        <button type="submit" class="primary-button">Enviar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
     
     <main>

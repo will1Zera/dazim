@@ -33,6 +33,9 @@ async function getFetch(url) {
         const data = await response.json();
 
         if (data.success) {
+            if(data.jwt){
+                return data.jwt;
+            }
             return data.data;
         } else {
             showToast("Não foi possível buscar os dados!", "darkred");

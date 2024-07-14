@@ -51,3 +51,21 @@ $('#logout').on('click', function() {
         }
     });
 });
+
+$(document).ready(async function() {
+    const data = await getFetch('/dazim/api/users/fetch');
+
+    $('#editar-nome-profile').val(data.name);
+    $('#editar-email-profile').val(data.email);
+});
+
+$('#editProfileForm').on('submit', function(e) {
+    e.preventDefault();
+    
+    const formData = new FormData();
+
+    formData.append('name', $('#editar-nome-profile').val());
+    formData.append('email', $('#editar-email-profile').val());
+
+    updateFetch(formData, '/dazim/api/users/update');
+});
