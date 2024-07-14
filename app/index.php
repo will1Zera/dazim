@@ -5,6 +5,7 @@ include 'src/controllers/HomeController.php';
 include 'src/controllers/EtniaController.php';
 include 'src/controllers/EscolaController.php';
 include 'src/controllers/TurnoController.php';
+include 'src/controllers/TurmaController.php';
 include 'src/controllers/GeneroController.php';
 include 'src/controllers/ParentescoController.php';
 include 'src/controllers/ResidenciaController.php';
@@ -44,6 +45,10 @@ switch($url){
 
     case '/dazim/app/escolas':
         EscolaController::index();
+    break;
+
+    case '/dazim/app/turmas':
+        TurmaController::index();
     break;
     
     /*

@@ -14,8 +14,8 @@
                 <li><a href="<?= $URL ?>residencias"><span data-text="Residências" class="sidebar-span">Residências</span></a></li>
             </ul>
         </li>
-        <li><a href="#"><i class="fa fa-graduation-cap icon"></i> <span data-text="Alunos" class="sidebar-span">Alunos</span></a></li>
-        <li><a href="#"><i class="fa fa-folder-open icon"></i> <span data-text="Turmas" class="sidebar-span">Turmas</span></a></li>
+        <li><a href="<?= $URL ?>alunos"><i class="fa fa-graduation-cap icon"></i> <span data-text="Alunos" class="sidebar-span">Alunos</span></a></li>
+        <li><a href="<?= $URL ?>turmas"><i class="fa fa-folder-open icon"></i> <span data-text="Turmas" class="sidebar-span">Turmas</span></a></li>
     </ul>
 </section>
 

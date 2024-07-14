@@ -17,9 +17,12 @@ class Turma extends Database
 
         $stmt = $pdo->prepare("
             SELECT
-                *
+                dazim_turmas.*,
+                dazim_turnos.nome AS turno_nome
             FROM
-                dazim_turmas 
+                dazim_turmas
+            LEFT JOIN
+                dazim_turnos ON dazim_turmas.turno_id = dazim_turnos.id
         ");
 
         $stmt->execute();
