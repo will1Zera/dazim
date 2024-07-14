@@ -1,11 +1,11 @@
 <div style="display: flex; justify-content: space-between;">
-    <h2 class="title">Etnias</h2>
-    <button type="button" class="primary-button" data-toggle="modal" data-target="#addEtniaModal">
+    <h2 class="title">Parentescos</h2>
+    <button type="button" class="primary-button" data-toggle="modal" data-target="#addParentescoModal">
         <i class="fa fa-plus" style="color: white;"></i>
     </button>
 </div>
 
-<!-- Tabela de Etnias -->
+<!-- Tabela de Parentescos -->
 <div class="table-responsive" style="margin-top: 15px;">
     <table class="table table-sm table-bordered">
         <thead>
@@ -15,12 +15,12 @@
                 <th></th>
             </tr>
         </thead>
-        <tbody id="table-etnias">
+        <tbody id="table-parentescos">
             <script id="table-template" type="text/x-template">
                 <tr>
                     <td>{{nome}}</td>
                     <td>
-                        <button type="button" class="btn btn-warning btn-sm edit-button" data-id="{{id}}" data-nome="{{nome}}" data-toggle="modal" data-target="#editEtniaModal">
+                        <button type="button" class="btn btn-warning btn-sm edit-button" data-id="{{id}}" data-nome="{{nome}}" data-toggle="modal" data-target="#editParentescoModal">
                             <i class="fa fa-pencil" style="color: white;"></i>
                         </button>
                     </td>
@@ -37,18 +37,18 @@
     </table>
 </div>
 
-<!-- Modal de adicionar etnia -->
-<div class="modal fade" id="addEtniaModal" tabindex="-1" role="dialog" aria-labelledby="addEtniaModalLabel" aria-hidden="true">
+<!-- Modal de adicionar parentesco -->
+<div class="modal fade" id="addParentescoModal" tabindex="-1" role="dialog" aria-labelledby="addParentescoModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="addEtniaModalLabel">Adicionar etnia</h5>
+                <h5 class="modal-title" id="addParentescoModalLabel">Adicionar parentesco</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <form id="addEtniaForm">
+                <form id="addParentescoForm">
                     <div class="mb-3">
                         <label for="nome" class="form-label">Nome*</label>
                         <input type="text" class="form-control" id="nome" name="nome" placeholder="Digite o nome" required>
@@ -60,18 +60,18 @@
     </div>
 </div>
 
-<!-- Modal de editar etnia -->
-<div class="modal fade" id="editEtniaModal" tabindex="-1" role="dialog" aria-labelledby="editEtniaModalLabel" aria-hidden="true">
+<!-- Modal de editar parentesco -->
+<div class="modal fade" id="editParentescoModal" tabindex="-1" role="dialog" aria-labelledby="editParentescoModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="editEtniaModalLabel">Editar etnia</h5>
+                <h5 class="modal-title" id="editParentescoModalLabel">Editar parentesco</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <form id="editEtniaForm">
+                <form id="editParentescoForm">
                     <div class="mb-3">
                         <label for="nome" class="form-label">Nome*</label>
                         <input type="text" class="form-control" id="editar-nome" name="nome" placeholder="Digite o nome" required>
@@ -90,8 +90,8 @@
     });
 
     async function indexPage(){
-        const data = await getFetch('<?= $API_URL ?>etnias');
-        const table_body = $('#table-etnias');
+        const data = await getFetch('<?= $API_URL ?>tipo_parentescos');
+        const table_body = $('#table-parentescos');
         const table_template = $('#table-template').html();
         table_body.empty();
 
@@ -120,7 +120,7 @@
                 confirmButtonText: 'Sim',
             }).then((result) => {
                 if (result.isConfirmed) {
-                    deleteFetch('<?= $API_URL ?>etnias/delete/' + $(this).data('id'));
+                    deleteFetch('<?= $API_URL ?>tipo_parentescos/delete/' + $(this).data('id'));
                 }
             });
         });
@@ -131,21 +131,21 @@
         });
     }
 
-    $('#addEtniaForm').on('submit', function(e) {
+    $('#addParentescoForm').on('submit', function(e) {
         e.preventDefault();
 
         const formData = new FormData(this);
 
-        postFetch(formData, '<?= $API_URL ?>etnias/create');
+        postFetch(formData, '<?= $API_URL ?>tipo_parentescos/create');
     });
 
-    $('#editEtniaForm').on('submit', function(e) {
+    $('#editParentescoForm').on('submit', function(e) {
         e.preventDefault();
         
         const formData = new FormData();
 
         formData.append('nome', $('#editar-nome').val());
 
-        updateFetch(formData, '<?= $API_URL ?>etnias/update/' + $('#editar-id').val());
+        updateFetch(formData, '<?= $API_URL ?>tipo_parentescos/update/' + $('#editar-id').val());
     });
 </script>

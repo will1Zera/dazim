@@ -7,7 +7,11 @@
             <a href="#"><i class="fa fa-tag icon"></i> <span data-text="Cadastros" class="sidebar-span">Cadastros</span></a>
             <ul class="side-dropdown">
                 <li><a href="<?= $URL ?>etnias"><span data-text="Etnias" class="sidebar-span">Etnias</span></a></li>
-                <li><a href="#"><span data-text="Teste2" class="sidebar-span">Teste2</span></a></li>
+                <li><a href="<?= $URL ?>escolas"><span data-text="Escolas" class="sidebar-span">Escolas</span></a></li>
+                <li><a href="<?= $URL ?>turnos"><span data-text="Turnos" class="sidebar-span">Turnos</span></a></li>
+                <li><a href="<?= $URL ?>generos"><span data-text="Gêneros" class="sidebar-span">Gêneros</span></a></li>
+                <li><a href="<?= $URL ?>parentescos"><span data-text="Parentescos" class="sidebar-span">Parentescos</span></a></li>
+                <li><a href="<?= $URL ?>residencias"><span data-text="Residências" class="sidebar-span">Residências</span></a></li>
             </ul>
         </li>
         <li><a href="#"><i class="fa fa-graduation-cap icon"></i> <span data-text="Alunos" class="sidebar-span">Alunos</span></a></li>
