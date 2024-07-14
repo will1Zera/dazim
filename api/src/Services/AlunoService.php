@@ -96,23 +96,23 @@ class AlunoService extends ServiceBase implements ServiceInterface
                 'tipo_parentesco_id' => $data['tipo_parentesco_id'] ?? '',
                 'nome_responsavel' => $data['nome_responsavel'] ?? '',
                 'nome_mae' => $data['nome_mae'] ?? '',
-                'alfabetizado' => $data['alfabetizado'] ?? ''
+                'alfabetizado' => isset($data['alfabetizado']) ? $data['alfabetizado'] : ''
             ]);
 
-            $fields['nis'] = $data['nis'] ?? null;
-            $fields['telefone'] = $data['telefone'] ?? null;
-            $fields['deficiencias'] = $data['deficiencias'] ?? null;
-            $fields['mae_trabalha_fora'] = $data['mae_trabalha_fora'] ?? null;
-            $fields['mae_interesse_projetos'] = $data['mae_interesse_projetos'] ?? null;
+            $fields['nis'] = isset($data['nis']) ?? null;
+            $fields['telefone'] = isset($data['telefone']) ?? null;
+            $fields['deficiencias'] = isset($data['deficiencias']) ?? null;
+            $fields['mae_trabalha_fora'] = isset($data['mae_trabalha_fora']) ?? null;
+            $fields['mae_interesse_projetos'] = isset($data['mae_interesse_projetos']) ?? null;
             $fields['renda_familiar_mensal'] = $data['renda_familiar_mensal'] ?? null;
             $fields['quantidade_filhos'] = $data['quantidade_filhos'] ?? null;
-            $fields['possui_irmao_instituicao'] = $data['possui_irmao_instituicao'] ?? null;
-            $fields['recebe_bolsa_familia'] = $data['recebe_bolsa_familia'] ?? null;
-            $fields['direito_imagem'] = $data['direito_imagem'] ?? null;
-            $fields['possui_banheiro'] = $data['possui_banheiro'] ?? null;
-            $fields['possui_agua'] = $data['possui_agua'] ?? null;
-            $fields['possui_luz'] = $data['possui_luz'] ?? null;
-            $fields['nota_fiscal_gaucha'] = $data['nota_fiscal_gaucha'] ?? null;
+            $fields['possui_irmao_instituicao'] = isset($data['possui_irmao_instituicao']) ?? null;
+            $fields['recebe_bolsa_familia'] = isset($data['recebe_bolsa_familia']) ?? null;
+            $fields['direito_imagem'] = isset($data['direito_imagem']) ?? null;
+            $fields['possui_banheiro'] = isset($data['possui_banheiro']) ?? null;
+            $fields['possui_agua'] = isset($data['possui_agua']) ?? null;
+            $fields['possui_luz'] = isset($data['possui_luz']) ?? null;
+            $fields['nota_fiscal_gaucha'] = isset($data['nota_fiscal_gaucha']) ?? null;
 
             $aluno = Aluno::save($fields);
 
@@ -161,23 +161,23 @@ class AlunoService extends ServiceBase implements ServiceInterface
                 'tipo_parentesco_id' => $data['tipo_parentesco_id'] ?? '',
                 'nome_responsavel' => $data['nome_responsavel'] ?? '',
                 'nome_mae' => $data['nome_mae'] ?? '',
-                'alfabetizado' => $data['alfabetizado'] ?? ''
+                'alfabetizado' => isset($data['alfabetizado']) ? $data['alfabetizado'] : ''
             ]);
 
             $fields['nis'] = $data['nis'] ?? null;
             $fields['telefone'] = $data['telefone'] ?? null;
             $fields['deficiencias'] = $data['deficiencias'] ?? null;
-            $fields['mae_trabalha_fora'] = $data['mae_trabalha_fora'] ?? null;
-            $fields['mae_interesse_projetos'] = $data['mae_interesse_projetos'] ?? null;
+            $fields['mae_trabalha_fora'] = isset($data['mae_trabalha_fora']) ?? null;
+            $fields['mae_interesse_projetos'] = isset($data['mae_interesse_projetos']) ?? null;
             $fields['renda_familiar_mensal'] = $data['renda_familiar_mensal'] ?? null;
             $fields['quantidade_filhos'] = $data['quantidade_filhos'] ?? null;
-            $fields['possui_irmao_instituicao'] = $data['possui_irmao_instituicao'] ?? null;
-            $fields['recebe_bolsa_familia'] = $data['recebe_bolsa_familia'] ?? null;
-            $fields['direito_imagem'] = $data['direito_imagem'] ?? null;
-            $fields['possui_banheiro'] = $data['possui_banheiro'] ?? null;
-            $fields['possui_agua'] = $data['possui_agua'] ?? null;
-            $fields['possui_luz'] = $data['possui_luz'] ?? null;
-            $fields['nota_fiscal_gaucha'] = $data['nota_fiscal_gaucha'] ?? null;
+            $fields['possui_irmao_instituicao'] = isset($data['possui_irmao_instituicao']) ?? null;
+            $fields['recebe_bolsa_familia'] = isset($data['recebe_bolsa_familia']) ?? null;
+            $fields['direito_imagem'] = isset($data['direito_imagem']) ?? null;
+            $fields['possui_banheiro'] = isset($data['possui_banheiro']) ?? null;
+            $fields['possui_agua'] = isset($data['possui_agua']) ?? null;
+            $fields['possui_luz'] = isset($data['possui_luz']) ?? null;
+            $fields['nota_fiscal_gaucha'] = isset($data['nota_fiscal_gaucha']) ?? null;
 
             $aluno = Aluno::update($id, $fields);
 

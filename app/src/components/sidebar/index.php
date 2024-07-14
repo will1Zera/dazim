@@ -26,7 +26,7 @@
         <div class="profile">
             <ul class="profile-link">
                 <li><a href="#" class="profile-option"><i class="fa fa-user icon"></i></a></li>
-                <li><a href="#" class="profile-option"><i class="fa fa-sign-out icon"></i></a></li>
+                <li><a href="#" id="logout" class="profile-option"><i class="fa fa-sign-out icon"></i></a></li>
             </ul>
         </div>
     </nav>

@@ -37,3 +37,17 @@ toggleSidebar.addEventListener('click', () => {
         });
     }
 })
+
+$('#logout').on('click', function() {
+    Swal.fire({
+        title: 'Tem certeza que deseja sair?',
+        icon: 'warning',
+        confirmButtonColor: '#3085d6',
+        confirmButtonText: 'Sim',
+    }).then((result) => {
+        if (result.isConfirmed) {
+            Cookies.remove('jwt');
+            window.location.href = '/dazim/app';
+        }
+    });
+});

@@ -14,7 +14,7 @@ class Validator
     public static function validate(array $fields)
     {
         foreach ($fields as $field => $value) {
-            if (empty(trim($value))) {
+            if (!isset($value) || trim((string)$value) === '') {
                 throw new \Exception("O campo $field é obrigatório.");
             }
         }

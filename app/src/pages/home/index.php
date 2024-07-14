@@ -52,7 +52,7 @@
                 lista_body.append(row);
             });
         } else {
-            const row = '<li>Nenhum aniversariante nessa semana</li>';
+            const row = '<li>Nenhum aniversariante encontrado.</li>';
             lista_body.append(row);
         }
     }
