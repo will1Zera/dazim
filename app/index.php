@@ -9,6 +9,7 @@ include 'src/controllers/TurmaController.php';
 include 'src/controllers/GeneroController.php';
 include 'src/controllers/ParentescoController.php';
 include 'src/controllers/ResidenciaController.php';
+include 'src/controllers/AlunoController.php';
 
 // Captura a url
 $url = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
@@ -49,6 +50,10 @@ switch($url){
 
     case '/dazim/app/turmas':
         TurmaController::index();
+    break;
+
+    case '/dazim/app/alunos':
+        AlunoController::index();
     break;
     
     /*

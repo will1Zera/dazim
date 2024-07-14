@@ -236,8 +236,6 @@ class AlunoService extends ServiceBase implements ServiceInterface
 
             $alunos = Aluno::birthday();
 
-            if(!$alunos) return ['error' => 'Não foi possível encontrar os alunos aniversariantes da semana.'];
-
             return $alunos;
         } catch (PDOException $e) {
             return self::handlePDOException($e);

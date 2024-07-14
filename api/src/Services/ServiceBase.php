@@ -46,7 +46,7 @@ abstract class ServiceBase
             return ['error' => 'Não foi possível encontrar a tabela.'];
         }
         if ($e->errorInfo[0] === '23000') {
-            return ['error' => 'Não foi possível criar a conta, e-mail já está em uso.'];
+            return ['error' => 'Não foi possível realizar a ação, houve alguma restrição de integridade.'];
         }
         return ['error' => $e->getMessage()];
     }

@@ -17,9 +17,24 @@ class Aluno extends Database
 
         $stmt = $pdo->prepare("
             SELECT
-                *
+                dazim_alunos.*,
+                dazim_generos.nome AS genero_nome,
+                dazim_etnias.nome AS etnia_nome,
+                dazim_escolas.nome AS escola_nome,
+                dazim_tipo_residencias.nome AS tipo_residencia_nome,
+                dazim_tipo_parentescos.nome AS tipo_parentesco_nome
             FROM
-                dazim_alunos 
+                dazim_alunos
+            LEFT JOIN
+                dazim_generos ON dazim_alunos.genero_id = dazim_generos.id
+            LEFT JOIN
+                dazim_etnias ON dazim_alunos.etnia_id = dazim_etnias.id
+            LEFT JOIN
+                dazim_escolas ON dazim_alunos.escola_id = dazim_escolas.id
+            LEFT JOIN
+                dazim_tipo_residencias ON dazim_alunos.tipo_residencia_id = dazim_tipo_residencias.id
+            LEFT JOIN
+                dazim_tipo_parentescos ON dazim_alunos.tipo_parentesco_id = dazim_tipo_parentescos.id
         ");
 
         $stmt->execute();
