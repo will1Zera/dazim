@@ -56,8 +56,6 @@ switch($url){
         AlunoController::index();
     break;
     
-    /*
     default:
-        SystemController::error();
-    */
+        AuthController::index();
 }
